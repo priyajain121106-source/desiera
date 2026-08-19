@@ -73,11 +73,13 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       const idx = prev.findIndex(
         (l) => l.productId === productId && l.size === size && !l.savedForLater,
       );
-      if (idx >= 0) {
+      const existing = idx >= 0 ? prev[idx] : undefined;
+      if (existing) {
         const next = [...prev];
-        next[idx] = { ...next[idx], qty: next[idx].qty + qty };
+        next[idx] = { ...existing, qty: existing.qty + qty };
         return next;
       }
+
       return [...prev, { productId, size, qty }];
     });
   }, []);
