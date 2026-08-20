@@ -1,6 +1,8 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { SlidersHorizontal } from "lucide-react";
 import { ProductCard } from "./ProductCard";
+import { Breadcrumbs, type Crumb } from "./Breadcrumbs";
+
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
@@ -26,25 +28,40 @@ type SortKey = "featured" | "newest" | "price-asc" | "price-desc";
 
 const MAX_PRICE = 7000;
 
+const PAGE_SIZE = 9;
+
 export function CollectionView({
   title,
   description,
   items,
   showCategoryFilter = true,
   emptyMessage = "No pieces match these filters yet.",
+  breadcrumbs,
+  headerSlot,
+  emptySlot,
 }: {
   title: string;
   description?: string;
   items: Product[];
   showCategoryFilter?: boolean;
   emptyMessage?: string;
+  breadcrumbs?: Crumb[];
+  headerSlot?: ReactNode;
+  emptySlot?: ReactNode;
 }) {
+
   const [sizes, setSizes] = useState<string[]>([]);
   const [colors, setColors] = useState<string[]>([]);
   const [cats, setCats] = useState<string[]>([]);
   const [inStockOnly, setInStockOnly] = useState(false);
   const [maxPrice, setMaxPrice] = useState(MAX_PRICE);
   const [sort, setSort] = useState<SortKey>("featured");
+  const [visible, setVisible] = useState(PAGE_SIZE);
+
+  useEffect(() => {
+    setVisible(PAGE_SIZE);
+  }, [items, sizes, colors, cats, inStockOnly, maxPrice, sort]);
+
 
   const toggle = (
     value: string,
@@ -179,15 +196,18 @@ export function CollectionView({
   );
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 md:px-8 md:py-16">
-      <header className="max-w-2xl">
+    <div className="mx-auto max-w-7xl px-4 py-10 md:px-8 md:py-14">
+      {breadcrumbs ? <Breadcrumbs items={breadcrumbs} /> : null}
+      <header className="mt-6 max-w-2xl">
         <h1 className="text-4xl md:text-5xl">{title}</h1>
         {description ? (
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
             {description}
           </p>
         ) : null}
+        {headerSlot}
       </header>
+
 
       <div className="mt-10 flex items-center justify-between gap-4 border-y border-border py-3">
         <div className="flex items-center gap-3">
@@ -226,7 +246,7 @@ export function CollectionView({
 
         <div className="flex-1">
           {filtered.length === 0 ? (
-            <div className="border border-dashed border-border px-6 py-24 text-center">
+            <div className="border border-dashed border-border px-6 py-20 text-center">
               <p className="font-display text-2xl">Nothing here yet</p>
               <p className="mx-auto mt-3 max-w-sm text-sm text-muted-foreground">
                 {emptyMessage}
@@ -234,15 +254,34 @@ export function CollectionView({
               <Button variant="outline" className="mt-6" onClick={clearAll}>
                 Clear filters
               </Button>
+              {emptySlot ? <div className="mt-14 text-left">{emptySlot}</div> : null}
             </div>
           ) : (
-            <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 md:gap-x-6">
-              {filtered.map((p, i) => (
-                <ProductCard key={p.id} product={p} priority={i < 3} />
-              ))}
-            </div>
+            <>
+              <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 md:gap-x-6">
+                {filtered.slice(0, visible).map((p, i) => (
+                  <ProductCard key={p.id} product={p} priority={i < 3} />
+                ))}
+              </div>
+              {visible < filtered.length ? (
+                <div className="mt-14 text-center">
+                  <p className="text-xs text-muted-foreground">
+                    Showing {visible} of {filtered.length}
+                  </p>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="mt-4"
+                    onClick={() => setVisible((v) => v + PAGE_SIZE)}
+                  >
+                    Load more
+                  </Button>
+                </div>
+              ) : null}
+            </>
           )}
         </div>
+
       </div>
     </div>
   );
