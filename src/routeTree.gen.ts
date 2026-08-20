@@ -16,6 +16,7 @@ import { Route as KurtasRouteImport } from './routes/kurtas'
 import { Route as KurtisRouteImport } from './routes/kurtis'
 import { Route as NewArrivalsRouteImport } from './routes/new-arrivals'
 import { Route as SaleRouteImport } from './routes/sale'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as ShopRouteImport } from './routes/shop'
 
 const IndexRoute = IndexRouteImport.update({
@@ -53,6 +54,11 @@ const SaleRoute = SaleRouteImport.update({
   path: '/sale',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
@@ -67,6 +73,7 @@ export interface FileRoutesByFullPath {
   '/kurtis': typeof KurtisRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/sale': typeof SaleRoute
+  '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
 }
 export interface FileRoutesByTo {
@@ -77,6 +84,7 @@ export interface FileRoutesByTo {
   '/kurtis': typeof KurtisRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/sale': typeof SaleRoute
+  '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
 }
 export interface FileRoutesById {
@@ -88,6 +96,7 @@ export interface FileRoutesById {
   '/kurtis': typeof KurtisRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/sale': typeof SaleRoute
+  '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
 }
 export interface FileRouteTypes {
@@ -100,6 +109,7 @@ export interface FileRouteTypes {
     | '/kurtis'
     | '/new-arrivals'
     | '/sale'
+    | '/search'
     | '/shop'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -110,6 +120,7 @@ export interface FileRouteTypes {
     | '/kurtis'
     | '/new-arrivals'
     | '/sale'
+    | '/search'
     | '/shop'
   id:
     | '__root__'
@@ -120,6 +131,7 @@ export interface FileRouteTypes {
     | '/kurtis'
     | '/new-arrivals'
     | '/sale'
+    | '/search'
     | '/shop'
   fileRoutesById: FileRoutesById
 }
@@ -131,6 +143,7 @@ export interface RootRouteChildren {
   KurtisRoute: typeof KurtisRoute
   NewArrivalsRoute: typeof NewArrivalsRoute
   SaleRoute: typeof SaleRoute
+  SearchRoute: typeof SearchRoute
   ShopRoute: typeof ShopRoute
 }
 
@@ -185,6 +198,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SaleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop': {
       id: '/shop'
       path: '/shop'
@@ -203,6 +223,7 @@ const rootRouteChildren: RootRouteChildren = {
   KurtisRoute: KurtisRoute,
   NewArrivalsRoute: NewArrivalsRoute,
   SaleRoute: SaleRoute,
+  SearchRoute: SearchRoute,
   ShopRoute: ShopRoute,
 }
 export const routeTree = rootRouteImport
