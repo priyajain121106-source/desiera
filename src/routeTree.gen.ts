@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CoOrdSetsRouteImport } from './routes/co-ord-sets'
+import { Route as KurtaSetsRouteImport } from './routes/kurta-sets'
+import { Route as KurtasRouteImport } from './routes/kurtas'
+import { Route as KurtisRouteImport } from './routes/kurtis'
+import { Route as NewArrivalsRouteImport } from './routes/new-arrivals'
+import { Route as SaleRouteImport } from './routes/sale'
+import { Route as ShopRouteImport } from './routes/shop'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CoOrdSetsRoute = CoOrdSetsRouteImport.update({
+  id: '/co-ord-sets',
+  path: '/co-ord-sets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KurtaSetsRoute = KurtaSetsRouteImport.update({
+  id: '/kurta-sets',
+  path: '/kurta-sets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KurtasRoute = KurtasRouteImport.update({
+  id: '/kurtas',
+  path: '/kurtas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KurtisRoute = KurtisRouteImport.update({
+  id: '/kurtis',
+  path: '/kurtis',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewArrivalsRoute = NewArrivalsRouteImport.update({
+  id: '/new-arrivals',
+  path: '/new-arrivals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SaleRoute = SaleRouteImport.update({
+  id: '/sale',
+  path: '/sale',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/co-ord-sets': typeof CoOrdSetsRoute
+  '/kurta-sets': typeof KurtaSetsRoute
+  '/kurtas': typeof KurtasRoute
+  '/kurtis': typeof KurtisRoute
+  '/new-arrivals': typeof NewArrivalsRoute
+  '/sale': typeof SaleRoute
+  '/shop': typeof ShopRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/co-ord-sets': typeof CoOrdSetsRoute
+  '/kurta-sets': typeof KurtaSetsRoute
+  '/kurtas': typeof KurtasRoute
+  '/kurtis': typeof KurtisRoute
+  '/new-arrivals': typeof NewArrivalsRoute
+  '/sale': typeof SaleRoute
+  '/shop': typeof ShopRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/co-ord-sets': typeof CoOrdSetsRoute
+  '/kurta-sets': typeof KurtaSetsRoute
+  '/kurtas': typeof KurtasRoute
+  '/kurtis': typeof KurtisRoute
+  '/new-arrivals': typeof NewArrivalsRoute
+  '/sale': typeof SaleRoute
+  '/shop': typeof ShopRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/co-ord-sets'
+    | '/kurta-sets'
+    | '/kurtas'
+    | '/kurtis'
+    | '/new-arrivals'
+    | '/sale'
+    | '/shop'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/co-ord-sets'
+    | '/kurta-sets'
+    | '/kurtas'
+    | '/kurtis'
+    | '/new-arrivals'
+    | '/sale'
+    | '/shop'
+  id:
+    | '__root__'
+    | '/'
+    | '/co-ord-sets'
+    | '/kurta-sets'
+    | '/kurtas'
+    | '/kurtis'
+    | '/new-arrivals'
+    | '/sale'
+    | '/shop'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CoOrdSetsRoute: typeof CoOrdSetsRoute
+  KurtaSetsRoute: typeof KurtaSetsRoute
+  KurtasRoute: typeof KurtasRoute
+  KurtisRoute: typeof KurtisRoute
+  NewArrivalsRoute: typeof NewArrivalsRoute
+  SaleRoute: typeof SaleRoute
+  ShopRoute: typeof ShopRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/co-ord-sets': {
+      id: '/co-ord-sets'
+      path: '/co-ord-sets'
+      fullPath: '/co-ord-sets'
+      preLoaderRoute: typeof CoOrdSetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kurta-sets': {
+      id: '/kurta-sets'
+      path: '/kurta-sets'
+      fullPath: '/kurta-sets'
+      preLoaderRoute: typeof KurtaSetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kurtas': {
+      id: '/kurtas'
+      path: '/kurtas'
+      fullPath: '/kurtas'
+      preLoaderRoute: typeof KurtasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kurtis': {
+      id: '/kurtis'
+      path: '/kurtis'
+      fullPath: '/kurtis'
+      preLoaderRoute: typeof KurtisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/new-arrivals': {
+      id: '/new-arrivals'
+      path: '/new-arrivals'
+      fullPath: '/new-arrivals'
+      preLoaderRoute: typeof NewArrivalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sale': {
+      id: '/sale'
+      path: '/sale'
+      fullPath: '/sale'
+      preLoaderRoute: typeof SaleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CoOrdSetsRoute: CoOrdSetsRoute,
+  KurtaSetsRoute: KurtaSetsRoute,
+  KurtasRoute: KurtasRoute,
+  KurtisRoute: KurtisRoute,
+  NewArrivalsRoute: NewArrivalsRoute,
+  SaleRoute: SaleRoute,
+  ShopRoute: ShopRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
