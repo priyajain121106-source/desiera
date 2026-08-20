@@ -240,7 +240,7 @@ export function CollectionView({
 
         <div className="flex-1">
           {filtered.length === 0 ? (
-            <div className="border border-dashed border-border px-6 py-24 text-center">
+            <div className="border border-dashed border-border px-6 py-20 text-center">
               <p className="font-display text-2xl">Nothing here yet</p>
               <p className="mx-auto mt-3 max-w-sm text-sm text-muted-foreground">
                 {emptyMessage}
@@ -248,15 +248,34 @@ export function CollectionView({
               <Button variant="outline" className="mt-6" onClick={clearAll}>
                 Clear filters
               </Button>
+              {emptySlot ? <div className="mt-14 text-left">{emptySlot}</div> : null}
             </div>
           ) : (
-            <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 md:gap-x-6">
-              {filtered.map((p, i) => (
-                <ProductCard key={p.id} product={p} priority={i < 3} />
-              ))}
-            </div>
+            <>
+              <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 md:gap-x-6">
+                {filtered.slice(0, visible).map((p, i) => (
+                  <ProductCard key={p.id} product={p} priority={i < 3} />
+                ))}
+              </div>
+              {visible < filtered.length ? (
+                <div className="mt-14 text-center">
+                  <p className="text-xs text-muted-foreground">
+                    Showing {visible} of {filtered.length}
+                  </p>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="mt-4"
+                    onClick={() => setVisible((v) => v + PAGE_SIZE)}
+                  >
+                    Load more
+                  </Button>
+                </div>
+              ) : null}
+            </>
           )}
         </div>
+
       </div>
     </div>
   );
