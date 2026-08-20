@@ -56,6 +56,12 @@ export function CollectionView({
   const [inStockOnly, setInStockOnly] = useState(false);
   const [maxPrice, setMaxPrice] = useState(MAX_PRICE);
   const [sort, setSort] = useState<SortKey>("featured");
+  const [visible, setVisible] = useState(PAGE_SIZE);
+
+  useEffect(() => {
+    setVisible(PAGE_SIZE);
+  }, [items, sizes, colors, cats, inStockOnly, maxPrice, sort]);
+
 
   const toggle = (
     value: string,
