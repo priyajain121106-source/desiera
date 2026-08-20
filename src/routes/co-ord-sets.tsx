@@ -10,7 +10,7 @@ export const Route = createFileRoute("/co-ord-sets")({
   head: () =>
     pageHead(
       "Women's Co-ord Sets — HOK",
-      "Shop women's Co-ord Sets at HOK — ${category.tagline.toLowerCase()}. Free shipping across India, Cash on Delivery available.",
+      "Shop women's Co-ord Sets at HOK for everyday wear. Free shipping across India, Cash on Delivery available.",
     ),
   component: CategoryPage,
 });

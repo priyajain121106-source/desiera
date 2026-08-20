@@ -10,7 +10,7 @@ export const Route = createFileRoute("/kurtas")({
   head: () =>
     pageHead(
       "Women's Kurtas — HOK",
-      "Shop women's Kurtas at HOK — ${category.tagline.toLowerCase()}. Free shipping across India, Cash on Delivery available.",
+      "Shop women's Kurtas at HOK for everyday wear. Free shipping across India, Cash on Delivery available.",
     ),
   component: CategoryPage,
 });
