@@ -28,19 +28,28 @@ type SortKey = "featured" | "newest" | "price-asc" | "price-desc";
 
 const MAX_PRICE = 7000;
 
+const PAGE_SIZE = 9;
+
 export function CollectionView({
   title,
   description,
   items,
   showCategoryFilter = true,
   emptyMessage = "No pieces match these filters yet.",
+  breadcrumbs,
+  headerSlot,
+  emptySlot,
 }: {
   title: string;
   description?: string;
   items: Product[];
   showCategoryFilter?: boolean;
   emptyMessage?: string;
+  breadcrumbs?: Crumb[];
+  headerSlot?: ReactNode;
+  emptySlot?: ReactNode;
 }) {
+
   const [sizes, setSizes] = useState<string[]>([]);
   const [colors, setColors] = useState<string[]>([]);
   const [cats, setCats] = useState<string[]>([]);
