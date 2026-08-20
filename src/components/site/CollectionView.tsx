@@ -179,15 +179,18 @@ export function CollectionView({
   );
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 md:px-8 md:py-16">
-      <header className="max-w-2xl">
+    <div className="mx-auto max-w-7xl px-4 py-10 md:px-8 md:py-14">
+      {breadcrumbs ? <Breadcrumbs items={breadcrumbs} /> : null}
+      <header className="mt-6 max-w-2xl">
         <h1 className="text-4xl md:text-5xl">{title}</h1>
         {description ? (
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
             {description}
           </p>
         ) : null}
+        {headerSlot}
       </header>
+
 
       <div className="mt-10 flex items-center justify-between gap-4 border-y border-border py-3">
         <div className="flex items-center gap-3">
