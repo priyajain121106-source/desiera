@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as CartRouteImport } from './routes/cart'
+import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CoOrdSetsRouteImport } from './routes/co-ord-sets'
 import { Route as KurtaSetsRouteImport } from './routes/kurta-sets'
 import { Route as KurtasRouteImport } from './routes/kurtas'
@@ -36,6 +37,11 @@ const AccountRoute = AccountRouteImport.update({
 const CartRoute = CartRouteImport.update({
   id: '/cart',
   path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CoOrdSetsRoute = CoOrdSetsRouteImport.update({
@@ -93,6 +99,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/co-ord-sets': typeof CoOrdSetsRoute
   '/kurta-sets': typeof KurtaSetsRoute
   '/kurtas': typeof KurtasRoute
@@ -108,6 +115,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/co-ord-sets': typeof CoOrdSetsRoute
   '/kurta-sets': typeof KurtaSetsRoute
   '/kurtas': typeof KurtasRoute
@@ -124,6 +132,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/co-ord-sets': typeof CoOrdSetsRoute
   '/kurta-sets': typeof KurtaSetsRoute
   '/kurtas': typeof KurtasRoute
@@ -141,6 +150,7 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/cart'
+    | '/checkout'
     | '/co-ord-sets'
     | '/kurta-sets'
     | '/kurtas'
@@ -156,6 +166,7 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/cart'
+    | '/checkout'
     | '/co-ord-sets'
     | '/kurta-sets'
     | '/kurtas'
@@ -171,6 +182,7 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/cart'
+    | '/checkout'
     | '/co-ord-sets'
     | '/kurta-sets'
     | '/kurtas'
@@ -187,6 +199,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccountRoute: typeof AccountRoute
   CartRoute: typeof CartRoute
+  CheckoutRoute: typeof CheckoutRoute
   CoOrdSetsRoute: typeof CoOrdSetsRoute
   KurtaSetsRoute: typeof KurtaSetsRoute
   KurtasRoute: typeof KurtasRoute
@@ -220,6 +233,13 @@ declare module '@tanstack/react-router' {
       path: '/cart'
       fullPath: '/cart'
       preLoaderRoute: typeof CartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/co-ord-sets': {
@@ -299,6 +319,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccountRoute: AccountRoute,
   CartRoute: CartRoute,
+  CheckoutRoute: CheckoutRoute,
   CoOrdSetsRoute: CoOrdSetsRoute,
   KurtaSetsRoute: KurtaSetsRoute,
   KurtasRoute: KurtasRoute,
