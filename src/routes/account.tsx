@@ -5,7 +5,7 @@ import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/account")({
   head: () =>
-    pageHead("Account — HOK", "Sign in to your HOK account to track orders and manage addresses."),
+    pageHead("Account — Desi Era", "Sign in to your Desi Era account to track orders and manage addresses."),
   component: AccountPage,
 });
 

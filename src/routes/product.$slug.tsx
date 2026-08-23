@@ -45,12 +45,12 @@ export const Route = createFileRoute("/product/$slug")({
     if (!p) {
       return {
         meta: [
-          { title: "Product unavailable — HOK" },
+          { title: "Product unavailable — Desi Era" },
           { name: "robots", content: "noindex" },
         ],
       };
     }
-    const title = `${p.name} — HOK`;
+    const title = `${p.name} — Desi Era`;
     const description = p.description.slice(0, 155);
     return {
       meta: [

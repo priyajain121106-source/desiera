@@ -5,8 +5,8 @@ import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/terms")({
   head: () =>
     pageHead(
-      "Terms & Conditions — HOK",
-      "The terms that govern your use of the HOK website and any order you place with us.",
+      "Terms & Conditions — Desi Era",
+      "The terms that govern your use of the Desi Era website and any order you place with us.",
     ),
   component: TermsPage,
 });
@@ -44,7 +44,7 @@ function TermsPage() {
       </Section>
       <Section heading="Intellectual property">
         <p>
-          All content on this site, including imagery and the HOK name, belongs to
+          All content on this site, including imagery and the Desi Era name, belongs to
           us and may not be reused without permission.
         </p>
       </Section>

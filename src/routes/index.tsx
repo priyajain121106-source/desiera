@@ -15,13 +15,13 @@ import bannerStyling from "@/assets/banner-styling.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "HOK — Everyday Indian, Effortlessly Elevated" },
+      { title: "Desi Era — Everyday Indian, Effortlessly Elevated" },
       {
         name: "description",
         content:
-          "Contemporary kurtis, kurtas, kurta sets and co-ord sets from HOK. Free shipping across India with Cash on Delivery available.",
+          "Contemporary kurtis, kurtas, kurta sets and co-ord sets from Desi Era. Free shipping across India with Cash on Delivery available.",
       },
-      { property: "og:title", content: "HOK — Everyday Indian, Effortlessly Elevated" },
+      { property: "og:title", content: "Desi Era — Everyday Indian, Effortlessly Elevated" },
       {
         property: "og:description",
         content:
@@ -38,47 +38,53 @@ function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative">
-        <div className="grid lg:grid-cols-[1fr_1.15fr]">
-          <div className="order-2 flex items-center bg-secondary px-6 py-16 md:px-14 lg:order-1 lg:py-24">
+      <section className="relative border-b border-border">
+        <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
+          <div className="order-2 flex items-center bg-secondary px-6 py-16 md:px-14 lg:order-1 lg:py-28">
             <div className="fade-up max-w-md">
-              <p className="eyebrow">New Season</p>
-              <h1 className="mt-5 text-5xl leading-[1.05] md:text-6xl">
+              <p className="eyebrow flex items-center gap-3">
+                <span className="h-px w-8 bg-accent" />
+                New Season 26
+              </p>
+              <h1 className="mt-6 text-[2.75rem] leading-[1.02] md:text-6xl lg:text-[4.25rem]">
                 Everyday Indian,
                 <br />
                 <em className="not-italic text-accent">Effortlessly</em> Elevated.
               </h1>
-              <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-                Contemporary ethnicwear cut for real days — kurtis, kurtas and sets
-                that move with you and style themselves.
+              <p className="mt-7 max-w-sm text-sm leading-relaxed text-muted-foreground">
+                Kurtis, kurtas and sets cut for real days — considered
+                silhouettes in breathable fabric, made to be restyled season
+                after season.
               </p>
-              <div className="mt-9 flex flex-wrap gap-3">
+              <div className="mt-10 flex flex-wrap gap-3">
                 <Link
                   to="/new-arrivals"
-                  className="inline-flex items-center gap-2 bg-primary px-7 py-4 text-xs uppercase tracking-[0.16em] text-primary-foreground transition-opacity hover:opacity-90"
+                  className="group inline-flex items-center gap-2 bg-primary px-8 py-4 text-xs uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-accent"
                 >
-                  Shop New Arrivals <ArrowRight className="size-3.5" />
+                  Shop New Arrivals
+                  <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
                   to="/kurta-sets"
-                  className="inline-flex items-center gap-2 border border-foreground px-7 py-4 text-xs uppercase tracking-[0.16em] transition-colors hover:bg-foreground hover:text-primary-foreground"
+                  className="inline-flex items-center gap-2 border border-foreground/25 px-8 py-4 text-xs uppercase tracking-[0.18em] transition-colors hover:border-foreground hover:bg-foreground hover:text-primary-foreground"
                 >
                   Explore Sets
                 </Link>
               </div>
             </div>
           </div>
-          <div className="order-1 lg:order-2">
+          <div className="relative order-1 lg:order-2">
             <img
               src={heroImage}
-              alt="Model wearing an ivory and terracotta block-print kurti from HOK"
-              width={1600}
-              height={1200}
-              className="h-[52vh] w-full object-cover object-top md:h-[70vh] lg:h-full"
+              alt="Model wearing an ivory block-print kurti with terracotta trousers"
+              width={1408}
+              height={1760}
+              className="h-[58vh] w-full object-cover object-[50%_18%] md:h-[76vh] lg:h-full"
             />
           </div>
         </div>
       </section>
+
 
       {/* Trust strip */}
       <section aria-label="Store benefits" className="border-y border-border">
@@ -146,7 +152,7 @@ function Home() {
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-20 md:px-8 lg:grid-cols-2 lg:gap-16">
           <img
             src={editorialImage}
-            alt="Model in a sage kurta set seated in natural light"
+            alt="Model in a sage green kurta set with dupatta, seated in natural light"
             width={1200}
             height={1504}
             loading="lazy"
@@ -178,11 +184,11 @@ function Home() {
         items={bestSellers.slice(0, 4)}
       />
 
-      {/* Why HOK */}
+      {/* Why Desi Era */}
       <section className="border-y border-border bg-background">
         <div className="mx-auto max-w-7xl px-4 py-20 md:px-8">
           <div className="max-w-xl">
-            <p className="eyebrow">Why HOK</p>
+            <p className="eyebrow">Why Desi Era</p>
             <h2 className="mt-3 text-3xl md:text-4xl">
               Considered pieces, quietly made
             </h2>
@@ -221,13 +227,14 @@ function Home() {
       <section className="relative">
         <img
           src={bannerStyling}
-          alt="Two models wearing HOK co-ord sets in a sunlit courtyard"
+          alt="Two models in rose and ink co-ord sets walking through a sunlit courtyard"
           width={1920}
           height={912}
           loading="lazy"
-          className="h-[46vh] w-full object-cover md:h-[60vh]"
+          className="h-[46vh] w-full object-cover object-[78%_center] md:h-[60vh] md:object-[72%_center]"
         />
-        <div className="absolute inset-0 flex items-center bg-linear-to-r from-background/85 via-background/40 to-transparent">
+        <div className="absolute inset-0 flex items-center bg-linear-to-r from-background via-background/70 to-transparent md:from-background/95 md:via-background/45">
+
           <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
             <div className="max-w-sm">
               <p className="eyebrow">Styling</p>
@@ -246,11 +253,10 @@ function Home() {
       {/* Social gallery */}
       <section className="mx-auto max-w-7xl px-4 py-20 md:px-8">
         <div className="text-center">
-          <p className="eyebrow">@hok</p>
+          <p className="eyebrow">@desiera</p>
           <h2 className="mt-3 text-3xl md:text-4xl">Styled by you</h2>
           <p className="mt-3 text-sm text-muted-foreground">
-            Tag us to be featured. Image slots below are placeholders — swap in your
-            own posts.
+            Tag @desiera to be featured in the next edit.
           </p>
         </div>
         <div className="mt-10 grid grid-cols-2 gap-2 md:grid-cols-6">

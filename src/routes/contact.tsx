@@ -12,8 +12,8 @@ import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/contact")({
   head: () =>
     pageHead(
-      "Contact Us — HOK",
-      "Questions about fit, fabric, an order or an exchange? Get in touch with the HOK team.",
+      "Contact Us — Desi Era",
+      "Questions about fit, fabric, an order or an exchange? Get in touch with the Desi Era team.",
     ),
   component: ContactPage,
 });

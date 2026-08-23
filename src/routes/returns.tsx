@@ -5,8 +5,8 @@ import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/returns")({
   head: () =>
     pageHead(
-      "Returns & Exchange — HOK",
-      "How to request a return or size exchange on HOK kurtis, kurtas and sets.",
+      "Returns & Exchange — Desi Era",
+      "How to request a return or size exchange on Desi Era kurtis, kurtas and sets.",
     ),
   component: ReturnsPage,
 });

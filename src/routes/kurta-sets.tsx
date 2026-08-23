@@ -9,8 +9,8 @@ const items = productsByCategory("kurta-sets");
 export const Route = createFileRoute("/kurta-sets")({
   head: () =>
     pageHead(
-      "Women's Kurta Sets — HOK",
-      "Shop women's Kurta Sets at HOK for everyday wear. Free shipping across India, Cash on Delivery available.",
+      "Women's Kurta Sets — Desi Era",
+      "Shop women's Kurta Sets at Desi Era for everyday wear. Free shipping across India, Cash on Delivery available.",
     ),
   component: CategoryPage,
 });

@@ -18,9 +18,10 @@ export const navLinks = [
 export function AnnouncementBar() {
   return (
     <div className="bg-primary text-primary-foreground">
-      <p className="mx-auto max-w-7xl px-4 py-2 text-center text-[0.6875rem] uppercase tracking-[0.22em]">
-        Free Shipping <span className="mx-2 text-accent">•</span> Cash on Delivery
-        Available
+      <p className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-3 gap-y-1 px-4 py-2.5 text-center text-[0.625rem] uppercase tracking-[0.24em] md:text-[0.6875rem]">
+        <span>Free shipping across India</span>
+        <span aria-hidden="true" className="text-accent">◆</span>
+        <span>Cash on Delivery available</span>
       </p>
     </div>
   );
@@ -71,7 +72,7 @@ export function Header() {
                   onClick={() => setMenuOpen(false)}
                   className="py-4 text-xs uppercase tracking-[0.16em] text-muted-foreground"
                 >
-                  About HOK
+                  About Desi Era
                 </Link>
               </nav>
             </SheetContent>

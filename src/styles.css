@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * HOK design system — premium Indian contemporary ethnicwear.
+ * Desi Era design system — premium Indian contemporary ethnicwear.
  * Palette: warm ivory / sand neutrals, deep ink contrast, muted gold accent.
  * All colors in oklch. Edit values here to re-skin the whole storefront.
  */
@@ -62,47 +62,47 @@
 :root {
   --radius: 0.25rem;
 
-  --background: oklch(0.985 0.006 85);
-  --foreground: oklch(0.24 0.014 55);
+  --background: oklch(0.983 0.008 72);
+  --foreground: oklch(0.23 0.026 32);
 
-  --card: oklch(0.995 0.003 85);
-  --card-foreground: oklch(0.24 0.014 55);
-  --popover: oklch(0.995 0.003 85);
-  --popover-foreground: oklch(0.24 0.014 55);
+  --card: oklch(0.995 0.004 78);
+  --card-foreground: oklch(0.23 0.026 32);
+  --popover: oklch(0.995 0.004 78);
+  --popover-foreground: oklch(0.23 0.026 32);
 
-  --primary: oklch(0.26 0.018 50);
-  --primary-foreground: oklch(0.97 0.008 85);
+  --primary: oklch(0.245 0.03 30);
+  --primary-foreground: oklch(0.975 0.008 78);
 
-  --secondary: oklch(0.945 0.014 82);
-  --secondary-foreground: oklch(0.26 0.018 50);
+  --secondary: oklch(0.945 0.018 62);
+  --secondary-foreground: oklch(0.245 0.03 30);
 
-  --muted: oklch(0.955 0.011 82);
-  --muted-foreground: oklch(0.52 0.018 62);
+  --muted: oklch(0.955 0.013 68);
+  --muted-foreground: oklch(0.475 0.026 42);
 
-  --accent: oklch(0.63 0.082 55);
-  --accent-foreground: oklch(0.99 0.005 85);
+  --accent: oklch(0.55 0.108 38);
+  --accent-foreground: oklch(0.99 0.005 80);
 
-  --destructive: oklch(0.53 0.17 27);
+  --destructive: oklch(0.52 0.17 27);
   --destructive-foreground: oklch(0.98 0.005 85);
 
-  --border: oklch(0.9 0.012 80);
-  --input: oklch(0.9 0.012 80);
-  --ring: oklch(0.63 0.082 55);
+  --border: oklch(0.895 0.014 66);
+  --input: oklch(0.895 0.014 66);
+  --ring: oklch(0.55 0.108 38);
 
-  --sand: oklch(0.93 0.02 80);
-  --ink: oklch(0.24 0.014 55);
-  --gold: oklch(0.7 0.075 78);
-  --blush: oklch(0.9 0.03 40);
-  --sale: oklch(0.52 0.15 30);
+  --sand: oklch(0.925 0.022 70);
+  --ink: oklch(0.23 0.026 32);
+  --gold: oklch(0.7 0.072 78);
+  --blush: oklch(0.9 0.032 36);
+  --sale: oklch(0.5 0.15 30);
 
-  --sidebar: oklch(0.97 0.008 85);
-  --sidebar-foreground: oklch(0.24 0.014 55);
-  --sidebar-primary: oklch(0.26 0.018 50);
-  --sidebar-primary-foreground: oklch(0.98 0.005 85);
-  --sidebar-accent: oklch(0.945 0.014 82);
-  --sidebar-accent-foreground: oklch(0.26 0.018 50);
-  --sidebar-border: oklch(0.9 0.012 80);
-  --sidebar-ring: oklch(0.63 0.082 55);
+  --sidebar: oklch(0.97 0.01 74);
+  --sidebar-foreground: oklch(0.23 0.026 32);
+  --sidebar-primary: oklch(0.245 0.03 30);
+  --sidebar-primary-foreground: oklch(0.98 0.005 80);
+  --sidebar-accent: oklch(0.945 0.018 62);
+  --sidebar-accent-foreground: oklch(0.245 0.03 30);
+  --sidebar-border: oklch(0.895 0.014 66);
+  --sidebar-ring: oklch(0.55 0.108 38);
 }
 
 .dark {

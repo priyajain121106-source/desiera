@@ -5,8 +5,8 @@ import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/shipping")({
   head: () =>
     pageHead(
-      "Shipping & Delivery — HOK",
-      "Shipping timelines, Cash on Delivery availability and order tracking for HOK orders across India.",
+      "Shipping & Delivery — Desi Era",
+      "Shipping timelines, Cash on Delivery availability and order tracking for Desi Era orders across India.",
     ),
   component: ShippingPage,
 });

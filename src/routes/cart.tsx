@@ -10,8 +10,8 @@ import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/cart")({
   head: () =>
     pageHead(
-      "Shopping Bag — HOK",
-      "Review the kurtis, kurtas and sets in your HOK shopping bag before checkout.",
+      "Shopping Bag — Desi Era",
+      "Review the kurtis, kurtas and sets in your Desi Era shopping bag before checkout.",
     ),
   component: CartPage,
 });

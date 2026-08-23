@@ -9,8 +9,8 @@ const items = productsByCategory("co-ord-sets");
 export const Route = createFileRoute("/co-ord-sets")({
   head: () =>
     pageHead(
-      "Women's Co-ord Sets — HOK",
-      "Shop women's Co-ord Sets at HOK for everyday wear. Free shipping across India, Cash on Delivery available.",
+      "Women's Co-ord Sets — Desi Era",
+      "Shop women's Co-ord Sets at Desi Era for everyday wear. Free shipping across India, Cash on Delivery available.",
     ),
   component: CategoryPage,
 });
