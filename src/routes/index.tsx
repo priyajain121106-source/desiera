@@ -152,7 +152,7 @@ function Home() {
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-20 md:px-8 lg:grid-cols-2 lg:gap-16">
           <img
             src={editorialImage}
-            alt="Model in a sage kurta set seated in natural light"
+            alt="Model in a sage green kurta set with dupatta, seated in natural light"
             width={1200}
             height={1504}
             loading="lazy"
@@ -227,7 +227,7 @@ function Home() {
       <section className="relative">
         <img
           src={bannerStyling}
-          alt="Two models wearing Desi Era co-ord sets in a sunlit courtyard"
+          alt="Two models in rose and ink co-ord sets walking through a sunlit courtyard"
           width={1920}
           height={912}
           loading="lazy"
@@ -255,7 +255,7 @@ function Home() {
           <p className="eyebrow">@desiera</p>
           <h2 className="mt-3 text-3xl md:text-4xl">Styled by you</h2>
           <p className="mt-3 text-sm text-muted-foreground">
-            Tag us to be featured. Image slots below are placeholders — swap in your
+            Tag @desiera to be featured in the next edit.
             own posts.
           </p>
         </div>
