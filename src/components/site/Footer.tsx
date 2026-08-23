@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Youtube } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Monogram } from "./Logo";
 
 const shopLinks = [
   { label: "New Arrivals", to: "/new-arrivals" as const },
@@ -57,7 +58,12 @@ export function Footer() {
     <footer className="border-t border-border bg-background">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 md:grid-cols-2 md:px-8 lg:grid-cols-4">
         <div>
-          <p className="font-display text-3xl tracking-[0.34em] pl-[0.34em]">Desi Era</p>
+          <div className="flex items-center gap-3">
+            <Monogram />
+            <p className="font-display text-2xl uppercase tracking-[0.32em] pl-[0.32em]">
+              Desi Era
+            </p>
+          </div>
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
             Desi Era — contemporary Indian ethnicwear designed for everyday
             wear. Kurtis, kurtas and sets made to be styled your way.

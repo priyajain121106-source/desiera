@@ -14,8 +14,8 @@ import product1 from "@/assets/product-1.jpg";
 import product2 from "@/assets/product-2.jpg";
 import product3 from "@/assets/product-3.jpg";
 import product4 from "@/assets/product-4.jpg";
-import heroMain from "@/assets/hero-main.jpg";
-import editorial from "@/assets/editorial-everyday.jpg";
+import heroMain from "@/assets/hero-desi-era.jpg";
+import editorial from "@/assets/editorial-desi-era.jpg";
 
 export type CategorySlug = "kurtis" | "kurtas" | "kurta-sets" | "co-ord-sets";
 
