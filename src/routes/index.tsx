@@ -256,7 +256,6 @@ function Home() {
           <h2 className="mt-3 text-3xl md:text-4xl">Styled by you</h2>
           <p className="mt-3 text-sm text-muted-foreground">
             Tag @desiera to be featured in the next edit.
-            own posts.
           </p>
         </div>
         <div className="mt-10 grid grid-cols-2 gap-2 md:grid-cols-6">
