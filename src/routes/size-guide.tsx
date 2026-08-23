@@ -5,8 +5,8 @@ import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/size-guide")({
   head: () =>
     pageHead(
-      "Size Guide — HOK",
-      "Body measurements and fit guidance for HOK kurtis, kurtas, kurta sets and co-ord sets.",
+      "Size Guide — Desi Era",
+      "Body measurements and fit guidance for Desi Era kurtis, kurtas, kurta sets and co-ord sets.",
     ),
   component: SizeGuidePage,
 });
@@ -29,7 +29,7 @@ function SizeGuidePage() {
     >
       <div className="overflow-x-auto border border-border">
         <table className="w-full min-w-[28rem] text-left text-sm">
-          <caption className="sr-only">HOK body measurements in inches</caption>
+          <caption className="sr-only">Desi Era body measurements in inches</caption>
           <thead className="bg-secondary text-xs uppercase tracking-[0.14em] text-foreground">
             <tr>
               <th scope="col" className="px-4 py-3">Size</th>

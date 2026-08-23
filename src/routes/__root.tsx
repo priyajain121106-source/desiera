@@ -80,13 +80,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "HOK — Contemporary Indian Ethnicwear" },
+      { title: "Desi Era — Contemporary Indian Ethnicwear" },
       {
         name: "description",
         content:
-          "HOK — kurtis, kurtas, kurta sets and co-ord sets designed for everyday wear.",
+          "Desi Era — kurtis, kurtas, kurta sets and co-ord sets designed for everyday wear.",
       },
-      { property: "og:site_name", content: "HOK" },
+      { property: "og:site_name", content: "Desi Era" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

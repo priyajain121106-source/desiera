@@ -1,5 +1,5 @@
 /**
- * HOK sample catalog.
+ * Desi Era sample catalog.
  * ------------------------------------------------------------------
  * Replace the `products` array with real catalog data. Keep the shape
  * intact and the storefront (grids, filters, PDP, cart) keeps working.

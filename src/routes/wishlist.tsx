@@ -7,7 +7,7 @@ import { products } from "@/data/products";
 import { useStore } from "@/lib/store";
 
 export const Route = createFileRoute("/wishlist")({
-  head: () => pageHead("Wishlist — HOK", "Your saved HOK pieces, kept in one place."),
+  head: () => pageHead("Wishlist — Desi Era", "Your saved Desi Era pieces, kept in one place."),
   component: WishlistPage,
 });
 

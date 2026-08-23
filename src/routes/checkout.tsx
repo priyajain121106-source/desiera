@@ -14,8 +14,8 @@ import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/checkout")({
   head: () =>
     pageHead(
-      "Checkout — HOK",
-      "Complete your HOK order with free shipping across India and Cash on Delivery on eligible pincodes.",
+      "Checkout — Desi Era",
+      "Complete your Desi Era order with free shipping across India and Cash on Delivery on eligible pincodes.",
     ),
   component: CheckoutPage,
 });

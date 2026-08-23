@@ -6,8 +6,8 @@ import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/about")({
   head: () =>
     pageHead(
-      "About HOK — House of Kurti",
-      "HOK is a contemporary Indian ethnicwear label making kurtis, kurtas and sets designed for everyday wear.",
+      "About Desi Era — Desi Era",
+      "Desi Era is a contemporary Indian ethnicwear label making kurtis, kurtas and sets designed for everyday wear.",
     ),
   component: AboutPage,
 });
@@ -20,10 +20,10 @@ function AboutPage() {
           <div className="max-w-md">
             <p className="eyebrow">About</p>
             <h1 className="mt-5 text-5xl leading-[1.05] md:text-6xl">
-              House of Kurti
+              Desi Era
             </h1>
             <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-              HOK makes contemporary Indian ethnicwear for everyday life — kurtis,
+              Desi Era makes contemporary Indian ethnicwear for everyday life — kurtis,
               kurtas, kurta sets and co-ord sets that are easy to wear, easy to
               restyle, and quietly considered in their detail.
             </p>
@@ -31,7 +31,7 @@ function AboutPage() {
         </div>
         <img
           src={editorialImage}
-          alt="HOK kurta set photographed in natural light"
+          alt="Desi Era kurta set photographed in natural light"
           loading="lazy"
           className="h-[46vh] w-full object-cover lg:h-full"
         />

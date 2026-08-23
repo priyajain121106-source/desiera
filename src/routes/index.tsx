@@ -15,13 +15,13 @@ import bannerStyling from "@/assets/banner-styling.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "HOK — Everyday Indian, Effortlessly Elevated" },
+      { title: "Desi Era — Everyday Indian, Effortlessly Elevated" },
       {
         name: "description",
         content:
-          "Contemporary kurtis, kurtas, kurta sets and co-ord sets from HOK. Free shipping across India with Cash on Delivery available.",
+          "Contemporary kurtis, kurtas, kurta sets and co-ord sets from Desi Era. Free shipping across India with Cash on Delivery available.",
       },
-      { property: "og:title", content: "HOK — Everyday Indian, Effortlessly Elevated" },
+      { property: "og:title", content: "Desi Era — Everyday Indian, Effortlessly Elevated" },
       {
         property: "og:description",
         content:
@@ -71,7 +71,7 @@ function Home() {
           <div className="order-1 lg:order-2">
             <img
               src={heroImage}
-              alt="Model wearing an ivory and terracotta block-print kurti from HOK"
+              alt="Model wearing an ivory and terracotta block-print kurti from Desi Era"
               width={1600}
               height={1200}
               className="h-[52vh] w-full object-cover object-top md:h-[70vh] lg:h-full"
@@ -178,11 +178,11 @@ function Home() {
         items={bestSellers.slice(0, 4)}
       />
 
-      {/* Why HOK */}
+      {/* Why Desi Era */}
       <section className="border-y border-border bg-background">
         <div className="mx-auto max-w-7xl px-4 py-20 md:px-8">
           <div className="max-w-xl">
-            <p className="eyebrow">Why HOK</p>
+            <p className="eyebrow">Why Desi Era</p>
             <h2 className="mt-3 text-3xl md:text-4xl">
               Considered pieces, quietly made
             </h2>
@@ -221,7 +221,7 @@ function Home() {
       <section className="relative">
         <img
           src={bannerStyling}
-          alt="Two models wearing HOK co-ord sets in a sunlit courtyard"
+          alt="Two models wearing Desi Era co-ord sets in a sunlit courtyard"
           width={1920}
           height={912}
           loading="lazy"
@@ -246,7 +246,7 @@ function Home() {
       {/* Social gallery */}
       <section className="mx-auto max-w-7xl px-4 py-20 md:px-8">
         <div className="text-center">
-          <p className="eyebrow">@hok</p>
+          <p className="eyebrow">@desiera</p>
           <h2 className="mt-3 text-3xl md:text-4xl">Styled by you</h2>
           <p className="mt-3 text-sm text-muted-foreground">
             Tag us to be featured. Image slots below are placeholders — swap in your

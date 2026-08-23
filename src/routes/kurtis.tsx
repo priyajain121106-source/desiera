@@ -9,8 +9,8 @@ const items = productsByCategory("kurtis");
 export const Route = createFileRoute("/kurtis")({
   head: () =>
     pageHead(
-      "Women's Kurtis — HOK",
-      "Shop women's Kurtis at HOK for everyday wear. Free shipping across India, Cash on Delivery available.",
+      "Women's Kurtis — Desi Era",
+      "Shop women's Kurtis at Desi Era for everyday wear. Free shipping across India, Cash on Delivery available.",
     ),
   component: CategoryPage,
 });

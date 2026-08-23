@@ -5,8 +5,8 @@ import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/privacy")({
   head: () =>
     pageHead(
-      "Privacy Policy — HOK",
-      "How HOK collects, uses and protects your personal information.",
+      "Privacy Policy — Desi Era",
+      "How Desi Era collects, uses and protects your personal information.",
     ),
   component: PrivacyPage,
 });

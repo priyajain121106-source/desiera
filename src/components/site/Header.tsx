@@ -71,7 +71,7 @@ export function Header() {
                   onClick={() => setMenuOpen(false)}
                   className="py-4 text-xs uppercase tracking-[0.16em] text-muted-foreground"
                 >
-                  About HOK
+                  About Desi Era
                 </Link>
               </nav>
             </SheetContent>

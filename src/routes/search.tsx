@@ -15,8 +15,8 @@ export const Route = createFileRoute("/search")({
 
   head: () =>
     pageHead(
-      "Search — HOK",
-      "Search the HOK collection of kurtis, kurtas, kurta sets and co-ord sets.",
+      "Search — Desi Era",
+      "Search the Desi Era collection of kurtis, kurtas, kurta sets and co-ord sets.",
     ),
   component: SearchPage,
 });

@@ -11,8 +11,8 @@ import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/faq")({
   head: () =>
     pageHead(
-      "FAQ — HOK",
-      "Answers on sizing, fabrics, shipping, Cash on Delivery, exchanges and order tracking at HOK.",
+      "FAQ — Desi Era",
+      "Answers on sizing, fabrics, shipping, Cash on Delivery, exchanges and order tracking at Desi Era.",
     ),
   component: FaqPage,
 });

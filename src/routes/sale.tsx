@@ -8,8 +8,8 @@ const onSale = products.filter((p) => p.compareAtPrice);
 export const Route = createFileRoute("/sale")({
   head: () =>
     pageHead(
-      "Sale — HOK",
-      "Reduced kurtis, kurtas and sets from HOK. Limited pieces, limited sizes.",
+      "Sale — Desi Era",
+      "Reduced kurtis, kurtas and sets from Desi Era. Limited pieces, limited sizes.",
     ),
   component: SalePage,
 });

@@ -25,7 +25,7 @@ export function Newsletter() {
   return (
     <section className="bg-secondary">
       <div className="mx-auto max-w-2xl px-4 py-20 text-center md:py-24">
-        <p className="eyebrow">The HOK Letter</p>
+        <p className="eyebrow">The Desi Era Letter</p>
         <h2 className="mt-4 text-3xl md:text-4xl">
           New arrivals, first look
         </h2>
@@ -57,19 +57,19 @@ export function Footer() {
     <footer className="border-t border-border bg-background">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 md:grid-cols-2 md:px-8 lg:grid-cols-4">
         <div>
-          <p className="font-display text-3xl tracking-[0.34em] pl-[0.34em]">HOK</p>
+          <p className="font-display text-3xl tracking-[0.34em] pl-[0.34em]">Desi Era</p>
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
-            House of Kurti — contemporary Indian ethnicwear designed for everyday
+            Desi Era — contemporary Indian ethnicwear designed for everyday
             wear. Kurtis, kurtas and sets made to be styled your way.
           </p>
           <div className="mt-6 flex gap-4">
-            <a href="#" aria-label="HOK on Instagram" className="text-muted-foreground transition-colors hover:text-accent">
+            <a href="#" aria-label="Desi Era on Instagram" className="text-muted-foreground transition-colors hover:text-accent">
               <Instagram className="size-5" strokeWidth={1.4} />
             </a>
-            <a href="#" aria-label="HOK on Facebook" className="text-muted-foreground transition-colors hover:text-accent">
+            <a href="#" aria-label="Desi Era on Facebook" className="text-muted-foreground transition-colors hover:text-accent">
               <Facebook className="size-5" strokeWidth={1.4} />
             </a>
-            <a href="#" aria-label="HOK on YouTube" className="text-muted-foreground transition-colors hover:text-accent">
+            <a href="#" aria-label="Desi Era on YouTube" className="text-muted-foreground transition-colors hover:text-accent">
               <Youtube className="size-5" strokeWidth={1.4} />
             </a>
           </div>
@@ -106,7 +106,7 @@ export function Footer() {
           <ul className="mt-5 space-y-3 text-sm">
             <li>
               <Link to="/about" className="text-muted-foreground transition-colors hover:text-foreground">
-                About HOK
+                About Desi Era
               </Link>
             </li>
             <li>
@@ -129,7 +129,7 @@ export function Footer() {
 
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between md:px-8">
-          <p>© {new Date().getFullYear()} House of Kurti (HOK). All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Desi Era. All rights reserved.</p>
           <p>Made in India</p>
         </div>
       </div>
