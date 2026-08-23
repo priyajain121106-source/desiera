@@ -231,9 +231,10 @@ function Home() {
           width={1920}
           height={912}
           loading="lazy"
-          className="h-[46vh] w-full object-cover md:h-[60vh]"
+          className="h-[46vh] w-full object-cover object-[78%_center] md:h-[60vh] md:object-[72%_center]"
         />
-        <div className="absolute inset-0 flex items-center bg-linear-to-r from-background/85 via-background/40 to-transparent">
+        <div className="absolute inset-0 flex items-center bg-linear-to-r from-background via-background/70 to-transparent md:from-background/95 md:via-background/45">
+
           <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
             <div className="max-w-sm">
               <p className="eyebrow">Styling</p>
