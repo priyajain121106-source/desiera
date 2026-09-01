@@ -140,7 +140,7 @@ function ProductPage() {
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
         {/* Gallery */}
-        <div className="flex flex-col-reverse gap-4 md:flex-row">
+        <div className="flex flex-col-reverse items-start gap-4 self-start md:flex-row">
           <div className="flex gap-3 md:flex-col">
             {product.images.map((img, i) => (
               <button
