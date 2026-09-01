@@ -14,6 +14,10 @@ import product1 from "@/assets/product-1.jpg";
 import product2 from "@/assets/product-2.jpg";
 import product3 from "@/assets/product-3.jpg";
 import product4 from "@/assets/product-4.jpg";
+import kurta1 from "@/assets/kurta-1.jpg";
+import kurta2 from "@/assets/kurta-2.jpg";
+import coord1 from "@/assets/coord-1.jpg";
+import coord2 from "@/assets/coord-2.jpg";
 import heroMain from "@/assets/hero-desi-era.jpg";
 import editorial from "@/assets/editorial-desi-era.jpg";
 
@@ -124,7 +128,7 @@ export const products: Product[] = [
     colorGroup: "Green",
     colorHex: "#94a97e",
     sizes: SIZES_STD,
-    images: [product2, editorial],
+    images: [kurta1, editorial],
     inStock: true,
     isNew: true,
     description:
@@ -175,7 +179,7 @@ export const products: Product[] = [
     colorGroup: "Pink",
     colorHex: "#d98c8c",
     sizes: SIZES_STD,
-    images: [product4, catCoords],
+    images: [coord2, catCoords],
     inStock: true,
     isNew: true,
     isBestSeller: true,
@@ -200,7 +204,7 @@ export const products: Product[] = [
     colorGroup: "Ivory",
     colorHex: "#efe9df",
     sizes: SIZES_STD,
-    images: [catCoords, product4],
+    images: [coord1, catCoords],
     inStock: true,
     isBestSeller: true,
     description:
@@ -246,7 +250,7 @@ export const products: Product[] = [
     colorGroup: "Blue",
     colorHex: "#22314f",
     sizes: SIZES_STD,
-    images: [catKurtas, product2],
+    images: [kurta2, catKurtas],
     inStock: true,
     isBestSeller: true,
     description:
@@ -292,7 +296,7 @@ export const products: Product[] = [
     colorGroup: "Green",
     colorHex: "#7c8760",
     sizes: SIZES_STD,
-    images: [editorial, product2],
+    images: [editorial, kurta1],
     inStock: false,
     description:
       "A softly draped kurta with a matching stole. Cut for movement and quiet evenings.",
@@ -338,7 +342,7 @@ export const products: Product[] = [
     colorGroup: "Ivory",
     colorHex: "#e3d7c5",
     sizes: SIZES_STD,
-    images: [product4, catCoords],
+    images: [coord2, coord1],
     inStock: true,
     description:
       "A pared-back co-ord in warm sand. Nothing extra, nothing missing.",
@@ -372,6 +376,100 @@ export const products: Product[] = [
       "Country of origin: India",
     ],
     stylingNote: "Sheer dupatta draped long keeps the line uninterrupted.",
+  },
+  {
+    id: "hok-013",
+    slug: "ivory-chikan-kurta",
+    name: "Sufi Ivory Chikan Kurta",
+    category: "kurtas",
+    price: 3690,
+    colorName: "Ivory",
+    colorGroup: "Ivory",
+    colorHex: "#f1e9dc",
+    sizes: SIZES_STD,
+    images: [kurta1, catKurtas],
+    inStock: true,
+    isNew: true,
+    description:
+      "A full-length ivory kurta with fine tonal chikan work across the yoke and hem. Light, breathable, quietly festive.",
+    details: ["Full-length A-line", "Tonal chikankari yoke and hem", "Concealed side pockets"],
+    fabricAndCare: [
+      "Fabric: add composition before launch",
+      "Care: add wash instructions",
+      "Country of origin: India",
+    ],
+    stylingNote: "Wear alone with flat sandals; add a thin gold hoop.",
+  },
+  {
+    id: "hok-014",
+    slug: "mitti-rust-kurta",
+    name: "Mitti Rust Kurta",
+    category: "kurtas",
+    price: 3190,
+    compareAtPrice: 3690,
+    colorName: "Rust",
+    colorGroup: "Rust",
+    colorHex: "#b06152",
+    sizes: SIZES_STD,
+    images: [kurta2, kurta1],
+    inStock: true,
+    isBestSeller: true,
+    description:
+      "A clean rust kurta with a contrast piped placket and deep slits. Structured through the shoulder, fluid below.",
+    details: ["Straight full-length fit", "Contrast piped placket", "Deep side slits"],
+    fabricAndCare: [
+      "Fabric: add composition before launch",
+      "Care: add wash instructions",
+      "Country of origin: India",
+    ],
+    stylingNote: "Narrow ivory pants keep the column line clean.",
+  },
+  {
+    id: "hok-015",
+    slug: "vann-sage-coord-set",
+    name: "Vann Sage Co-ord Set",
+    category: "co-ord-sets",
+    price: 4190,
+    colorName: "Sage",
+    colorGroup: "Green",
+    colorHex: "#9aae8b",
+    sizes: SIZES_STD,
+    images: [coord1, coord2],
+    inStock: true,
+    isNew: true,
+    description:
+      "A relaxed camp-collar shirt with wide-leg trousers in soft sage. Made to wear together or apart.",
+    details: ["Camp-collar shirt with chest pocket", "Wide-leg pleated trousers", "Side pockets"],
+    fabricAndCare: [
+      "Fabric: add composition before launch",
+      "Care: add wash instructions",
+      "Country of origin: India",
+    ],
+    stylingNote: "Tuck the shirt loosely and add flat slides.",
+  },
+  {
+    id: "hok-016",
+    slug: "reth-sand-coord-set",
+    name: "Reth Sand Co-ord Set",
+    category: "co-ord-sets",
+    price: 3890,
+    compareAtPrice: 4490,
+    colorName: "Sand",
+    colorGroup: "Ivory",
+    colorHex: "#d9c3a2",
+    sizes: SIZES_STD,
+    images: [coord2, catCoords],
+    inStock: true,
+    isBestSeller: true,
+    description:
+      "A short mandarin-collar top over tapered pants in warm sand. The easiest kind of dressed.",
+    details: ["Short mandarin-collar top", "Tapered ankle pants", "Tonal topstitch detail"],
+    fabricAndCare: [
+      "Fabric: add composition before launch",
+      "Care: add wash instructions",
+      "Country of origin: India",
+    ],
+    stylingNote: "Keep it tonal — tan leather sandals finish it.",
   },
 ];
 
