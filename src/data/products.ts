@@ -91,8 +91,9 @@ const SIZES_STD = ["XS", "S", "M", "L", "XL", "XXL"];
 export const allSizes = SIZES_STD;
 
 const CARE = [
-  "Fabric: add composition before launch",
-  "Care: add wash instructions",
+  "Fabric: 100% breathable cotton blend",
+  "Care: gentle machine wash cold, do not bleach",
+  "Dry in shade, warm iron on reverse",
   "Country of origin: India",
 ];
 
