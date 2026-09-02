@@ -432,8 +432,8 @@ export const newArrivals = products.filter((p) => p.isNew);
 export const bestSellers = products.filter((p) => p.isBestSeller);
 
 export const colorGroups = Array.from(
-  new Set(products.map((p) => p.colorGroup)),
-).sort();
+  new Map(products.map((p) => [p.colorGroup, { name: p.colorGroup, hex: p.colorHex }])).values(),
+).sort((a, b) => a.name.localeCompare(b.name));
 
 export const formatINR = (value: number) =>
   `₹${value.toLocaleString("en-IN")}`;
