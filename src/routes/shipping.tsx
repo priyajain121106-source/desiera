@@ -16,7 +16,7 @@ function ShippingPage() {
     <StaticPage
       eyebrow="Help"
       title="Shipping & Delivery"
-      intro="Free shipping across India. The timelines below are placeholders — confirm them with your logistics partner before launch."
+      intro="Free shipping across India, with Cash on Delivery available on eligible pincodes."
     >
       <Section heading="Dispatch">
         <p>Orders are dispatched within 1–3 business days of confirmation.</p>

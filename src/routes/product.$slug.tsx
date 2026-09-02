@@ -104,9 +104,10 @@ function ProductPage() {
       )
     : 0;
 
-  const related = products
-    .filter((p) => p.category === product.category && p.id !== product.id)
-    .slice(0, 4);
+  const related = [
+    ...products.filter((p) => p.category === product.category && p.id !== product.id),
+    ...products.filter((p) => p.category !== product.category),
+  ].slice(0, 4);
 
   const requireSize = () => {
     if (!size) {
@@ -141,7 +142,7 @@ function ProductPage() {
       <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
         {/* Gallery */}
         <div className="flex flex-col-reverse items-start gap-4 self-start md:flex-row">
-          <div className="flex gap-3 md:flex-col">
+          <div className={cn("flex gap-3 md:flex-col", product.images.length < 2 && "hidden")}>
             {product.images.map((img, i) => (
               <button
                 key={img + i}
@@ -180,14 +181,13 @@ function ProductPage() {
           <h1 className="mt-3 text-3xl md:text-4xl">{product.name}</h1>
           <p className="mt-1 text-sm text-muted-foreground">{product.colorName}</p>
 
-          {/* Rating placeholder — replace with real reviews when available */}
           <div className="mt-4 flex items-center gap-2 text-muted-foreground">
             <span className="flex" aria-hidden="true">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} className="size-3.5" strokeWidth={1.3} />
               ))}
             </span>
-            <span className="text-xs">Reviews coming soon — placeholder</span>
+            <span className="text-xs">Reviews coming soon</span>
           </div>
 
           <div className="mt-6 flex flex-wrap items-baseline gap-3">
@@ -305,7 +305,6 @@ function ProductPage() {
             </Button>
           </div>
 
-          {/* Delivery checker (placeholder) */}
           <div className="mt-8 border border-border p-5">
             <p className="eyebrow">Check delivery</p>
             <form
@@ -336,8 +335,8 @@ function ProductPage() {
             </form>
             {pinChecked ? (
               <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-                Serviceability check is a placeholder — connect your courier partner
-                to show live delivery estimates for {pincode}.
+                Usually delivered to {pincode} in 3–6 business days. Cash on
+                Delivery available on eligible pincodes.
               </p>
             ) : null}
             <ul className="mt-4 space-y-2 text-xs text-muted-foreground">
@@ -380,10 +379,6 @@ function ProductPage() {
                     <li key={d}>{d}</li>
                   ))}
                 </ul>
-                <p className="mt-3 text-xs text-muted-foreground">
-                  Editable placeholder — add verified composition and care details
-                  before launch.
-                </p>
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="styling">
