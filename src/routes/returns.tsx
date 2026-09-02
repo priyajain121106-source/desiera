@@ -16,7 +16,7 @@ function ReturnsPage() {
     <StaticPage
       eyebrow="Help"
       title="Returns & Exchange"
-      intro="Policy placeholder — review and confirm these terms with your operations team before launch."
+      intro="Easy 7-day exchanges on unworn pieces. Here's exactly how it works."
     >
       <Section heading="Exchange window">
         <p>
