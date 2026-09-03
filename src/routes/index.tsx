@@ -27,9 +27,11 @@ export const Route = createFileRoute("/")({
         content:
           "Contemporary kurtis, kurtas, kurta sets and co-ord sets designed for everyday wear.",
       },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "https://desiera.lovable.app/" },
+      { property: "og:image", content: "https://desiera.lovable.app/og-desi-era.jpg" },
+      { name: "twitter:image", content: "https://desiera.lovable.app/og-desi-era.jpg" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://desiera.lovable.app/" }],
   }),
   component: Home,
 });
