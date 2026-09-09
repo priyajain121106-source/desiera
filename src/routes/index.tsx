@@ -41,9 +41,9 @@ function Home() {
     <>
       {/* Hero */}
       <section className="relative border-b border-border">
-        <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
-          <div className="order-2 flex items-center bg-secondary px-6 py-16 md:px-14 lg:order-1 lg:py-28">
-            <div className="fade-up max-w-md">
+        <div className="grid min-h-[calc(100svh-7rem)] lg:grid-cols-2">
+          <div className="order-2 flex items-center justify-center bg-secondary px-6 py-16 md:px-14 lg:order-1 lg:py-0">
+            <div className="fade-up max-w-md lg:max-w-lg">
               <p className="eyebrow flex items-center gap-3">
                 <span className="h-px w-8 bg-accent" />
                 New Season 26
@@ -75,13 +75,13 @@ function Home() {
               </div>
             </div>
           </div>
-          <div className="relative order-1 lg:order-2">
+          <div className="relative order-1 min-h-[50vh] lg:order-2 lg:min-h-full">
             <img
               src={heroImage}
               alt="Model wearing an ivory block-print kurti with terracotta trousers"
               width={1408}
               height={1760}
-              className="h-[58vh] w-full object-cover object-[50%_18%] md:h-[76vh] lg:h-full"
+              className="h-full min-h-full w-full object-cover object-[50%_18%]"
             />
           </div>
         </div>
@@ -122,7 +122,7 @@ function Home() {
         <div className="mt-10 grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
           {categories.map((c) => (
             <Link key={c.slug} to={`/${c.slug}`} className="group block">
-              <div className="overflow-hidden bg-secondary">
+              <div className="relative overflow-hidden bg-secondary">
                 <img
                   src={c.image}
                   alt={`${c.name} collection`}
@@ -131,6 +131,11 @@ function Home() {
                   loading="lazy"
                   className="aspect-3/4 w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
+                {(c.slug === "kurta-sets" || c.slug === "co-ord-sets") && (
+                  <span className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-background/85 px-5 py-2.5 text-[0.625rem] uppercase tracking-[0.14em] text-foreground shadow-sm backdrop-blur-sm">
+                    {c.slug === "kurta-sets" ? "Explore Sets" : "Explore Co-Ords"}
+                  </span>
+                )}
               </div>
               <h3 className="mt-4 text-xl transition-colors group-hover:text-accent">
                 {c.name}
