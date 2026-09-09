@@ -122,7 +122,7 @@ function Home() {
         <div className="mt-10 grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
           {categories.map((c) => (
             <Link key={c.slug} to={`/${c.slug}`} className="group block">
-              <div className="overflow-hidden bg-secondary">
+              <div className="relative overflow-hidden bg-secondary">
                 <img
                   src={c.image}
                   alt={`${c.name} collection`}
@@ -131,6 +131,11 @@ function Home() {
                   loading="lazy"
                   className="aspect-3/4 w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
+                {(c.slug === "kurta-sets" || c.slug === "co-ord-sets") && (
+                  <span className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-background/85 px-4 py-2 text-[0.6875rem] uppercase tracking-[0.14em] text-foreground shadow-sm backdrop-blur-sm">
+                    {c.slug === "kurta-sets" ? "Explore Sets" : "Explore Co-Ords"}
+                  </span>
+                )}
               </div>
               <h3 className="mt-4 text-xl transition-colors group-hover:text-accent">
                 {c.name}
