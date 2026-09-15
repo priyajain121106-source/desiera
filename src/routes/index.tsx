@@ -27,11 +27,11 @@ export const Route = createFileRoute("/")({
         content:
           "Contemporary kurtis, kurtas, kurta sets and co-ord sets designed for everyday wear.",
       },
-      { property: "og:url", content: "https://desiera.lovable.app/" },
-      { property: "og:image", content: "https://desiera.lovable.app/og-desi-era.jpg" },
-      { name: "twitter:image", content: "https://desiera.lovable.app/og-desi-era.jpg" },
+      { property: "og:url", content: "https://desiera.shop/" },
+      { property: "og:image", content: "https://desiera.shop/og-desi-era.jpg" },
+      { name: "twitter:image", content: "https://desiera.shop/og-desi-era.jpg" },
     ],
-    links: [{ rel: "canonical", href: "https://desiera.lovable.app/" }],
+    links: [{ rel: "canonical", href: "https://desiera.shop/" }],
   }),
   component: Home,
 });

@@ -49,7 +49,10 @@ export function Header() {
               <Menu className="size-5" strokeWidth={1.4} />
             </SheetTrigger>
             <SheetContent side="left" className="w-[86vw] max-w-xs p-0">
-              <nav className="flex flex-col px-6 pt-10">
+              <div className="border-b border-border px-6 py-5">
+                <Logo size="sm" />
+              </div>
+              <nav className="flex flex-col px-6 pt-4">
                 {navLinks.map((l) => (
                   <Link
                     key={l.to}

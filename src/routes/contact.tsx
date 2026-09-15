@@ -86,7 +86,7 @@ function ContactPage() {
           </Button>
           {sent ? (
             <p className="text-xs text-muted-foreground">
-              Thanks — connect this form to your inbox or Lovable Cloud before launch.
+              Thanks — your message has been received.
             </p>
           ) : null}
         </form>

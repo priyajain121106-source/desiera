@@ -1,5 +1,5 @@
 /** Small helper so every route ships consistent, unique metadata. */
-export const OG_IMAGE = "https://desiera.lovable.app/og-desi-era.jpg";
+export const OG_IMAGE = "https://desiera.shop/og-desi-era.jpg";
 
 export function pageHead(title: string, description: string) {
   return {
