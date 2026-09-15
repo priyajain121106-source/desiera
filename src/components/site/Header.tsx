@@ -50,7 +50,7 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="left" className="w-[86vw] max-w-xs p-0">
               <div className="border-b border-border px-6 py-5">
-                <Logo size="sm" />
+                <Logo size="sm" fullArtwork />
               </div>
               <nav className="flex flex-col px-6 pt-4">
                 {navLinks.map((l) => (
@@ -83,7 +83,7 @@ export function Header() {
         </div>
 
         <div className="hidden flex-1 lg:block">
-          <Logo size="md" className="items-start" />
+          <Logo size="md" fullArtwork className="items-start" />
         </div>
 
         <nav
@@ -103,7 +103,7 @@ export function Header() {
         </nav>
 
         <div className="lg:hidden">
-          <Logo size="sm" />
+          <Logo size="sm" fullArtwork />
         </div>
 
         <div className="flex flex-1 items-center justify-end gap-1 md:gap-3">

@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
 import desiEraMark from "@/assets/desi-era-mark.png.asset.json";
+import desiEraFullLogo from "@/assets/desi-era-full-logo.png.asset.json";
 
 export function Monogram({ className }: { className?: string }) {
   return (
@@ -21,10 +22,12 @@ export function Logo({
   className,
   size = "md",
   withMonogram = true,
+  fullArtwork = false,
 }: {
   className?: string;
   size?: "sm" | "md" | "lg";
   withMonogram?: boolean;
+  fullArtwork?: boolean;
 }) {
   const sizes = {
     sm: "text-base tracking-[0.3em] pl-[0.3em]",
@@ -36,16 +39,30 @@ export function Logo({
     md: "size-11",
     lg: "size-14",
   };
+  const artworkSizes = {
+    sm: "size-16",
+    md: "size-20",
+    lg: "size-24",
+  };
   return (
     <Link
       to="/"
       aria-label="Desi Era — home"
       className={cn("group inline-flex items-center gap-3 leading-none", className)}
     >
-      {withMonogram ? (
+      {fullArtwork ? (
+        <img
+          src={desiEraFullLogo.url}
+          alt="Desi Era — Everyday Elegance, Effortlessly"
+          width={1254}
+          height={1254}
+          className={cn("shrink-0 object-contain", artworkSizes[size])}
+        />
+      ) : null}
+      {!fullArtwork && withMonogram ? (
         <Monogram className={cn("transition-transform duration-300 group-hover:scale-105", markSizes[size])} />
       ) : null}
-      <span className="flex flex-col">
+      {!fullArtwork ? <span className="flex flex-col">
         <span
           className={cn(
             "font-display uppercase text-foreground transition-colors group-hover:text-accent",
@@ -57,7 +74,7 @@ export function Logo({
         <span className="mt-1 hidden text-[0.5rem] uppercase tracking-[0.34em] pl-[0.34em] text-muted-foreground sm:block">
           Indian Ethnicwear
         </span>
-      </span>
+      </span> : null}
     </Link>
   );
 }
