@@ -1,22 +1,22 @@
 import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
+import desiEraMark from "@/assets/desi-era-mark.png.asset.json";
 
-/** Desi Era monogram mark — refined, minimal, feminine-modern. */
 export function Monogram({ className }: { className?: string }) {
   return (
-    <span
-      aria-hidden="true"
+    <img
+      src={desiEraMark.url}
+      alt=""
+      width={512}
+      height={512}
       className={cn(
-        "grid size-9 shrink-0 place-items-center rounded-full border border-accent/50 font-display text-[0.9rem] tracking-[0.06em] text-accent transition-colors",
+        "size-10 shrink-0 object-contain",
         className,
       )}
-    >
-      DE
-    </span>
+    />
   );
 }
 
-/** Desi Era wordmark — monogram + selectively used full name. */
 export function Logo({
   className,
   size = "md",
@@ -29,7 +29,12 @@ export function Logo({
   const sizes = {
     sm: "text-base tracking-[0.3em] pl-[0.3em]",
     md: "text-lg md:text-xl tracking-[0.32em] pl-[0.32em]",
-    lg: "text-3xl md:text-4xl tracking-[0.34em] pl-[0.34em]",
+    lg: "text-2xl md:text-3xl tracking-[0.34em] pl-[0.34em]",
+  };
+  const markSizes = {
+    sm: "size-9",
+    md: "size-11",
+    lg: "size-14",
   };
   return (
     <Link
@@ -38,7 +43,7 @@ export function Logo({
       className={cn("group inline-flex items-center gap-3 leading-none", className)}
     >
       {withMonogram ? (
-        <Monogram className="group-hover:border-accent group-hover:bg-accent group-hover:text-accent-foreground" />
+        <Monogram className={cn("transition-transform duration-300 group-hover:scale-105", markSizes[size])} />
       ) : null}
       <span className="flex flex-col">
         <span
