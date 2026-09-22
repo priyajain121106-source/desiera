@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
 import desiEraMark from "@/assets/desi-era-mark.png.asset.json";
-import desiEraFullLogo from "@/assets/desi-era-header-logo.png.asset.json";
+import desiEraFullLogo from "@/assets/desi-era-header-logo.png";
 
 export function Monogram({ className }: { className?: string }) {
   return (
@@ -52,7 +52,7 @@ export function Logo({
     >
       {fullArtwork ? (
         <img
-          src={desiEraFullLogo.url}
+          src={desiEraFullLogo}
           alt="Desi Era — Everyday Elegance, Effortlessly"
           width={237}
           height={91}
