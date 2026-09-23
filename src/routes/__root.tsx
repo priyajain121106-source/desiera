@@ -135,6 +135,17 @@ function RootShell({ children }: { children: ReactNode }) {
         {/* End Meta Pixel Code */}
       </head>
       <body>
+        {/* Meta Pixel Code (noscript) */}
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=1049358361270439&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
+        {/* End Meta Pixel Code (noscript) */}
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
