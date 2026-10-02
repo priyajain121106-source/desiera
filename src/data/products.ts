@@ -22,6 +22,13 @@ import kurta3 from "@/assets/kurta-3.jpg";
 import coord1 from "@/assets/coord-1.jpg";
 import coord2 from "@/assets/coord-2.jpg";
 import set2 from "@/assets/set-2.jpg";
+import kurtiAanya from "@/assets/kurti-aanya.jpg";
+import kurtiTara from "@/assets/kurti-tara.jpg";
+import kurtiMeera from "@/assets/kurti-meera.jpg";
+import setNoor from "@/assets/set-noor.jpg";
+import setChandni from "@/assets/set-chandni.jpg";
+import coordZoya from "@/assets/coord-zoya.jpg";
+import coordMaya from "@/assets/coord-maya.jpg";
 import heroMain from "@/assets/hero-desi-era.jpg";
 import editorial from "@/assets/editorial-desi-era.jpg";
 
@@ -99,6 +106,55 @@ const CARE = [
 
 export const products: Product[] = [
   /* ---------------------------------------------------------- Kurtis */
+  {
+    id: "kurti-aanya-rose", slug: "aanya-slub-cotton-straight-kurti", name: "Aanya Slub Cotton Straight Kurti", category: "kurtis",
+    price: 699, compareAtPrice: 1299, colorName: "Dusty Rose", colorGroup: "Pink", colorHex: "#c48b8f",
+    sizes: ["XS","S","M","L","XL","XXL"], images: [kurtiAanya], inStock: true, isNew: true, isBestSeller: false,
+    description: "Breathable 100% slub cotton daily kurti featuring subtle side slits, wooden button accents, and a comfortable notched round neck.",
+    details: ["Straight fit with side slits","Notched round neck","Wooden button placket"], fabricAndCare: CARE, stylingNote: "Wear with white straight pants and juttis.",
+  },
+  {
+    id: "kurti-tara-indigo", slug: "tara-jaipuri-block-print-kurti", name: "Tara Jaipuri Block-Print Kurti", category: "kurtis",
+    price: 749, compareAtPrice: 1399, colorName: "Indigo Blue", colorGroup: "Blue", colorHex: "#2f4a8a",
+    sizes: ["XS","S","M","L","XL"], images: [kurtiTara], inStock: true, isNew: true, isBestSeller: true,
+    description: "Crafted in lightweight cambric cotton with artisanal Jaipuri handblock motifs and relaxed three-quarter sleeves.",
+    details: ["Jaipuri handblock print","Three-quarter sleeves","Relaxed straight fit"], fabricAndCare: CARE, stylingNote: "Pair with ivory pants and silver jhumkas.",
+  },
+  {
+    id: "kurti-meera-terracotta", slug: "meera-solid-cotton-tunic-kurti", name: "Meera Solid Cotton Tunic Kurti", category: "kurtis",
+    price: 599, compareAtPrice: 1199, colorName: "Earthy Terracotta", colorGroup: "Rust", colorHex: "#b45a3c",
+    sizes: ["XS","S","M","L","XL","XXL"], images: [kurtiMeera], inStock: true, isNew: true, isBestSeller: false,
+    description: "A minimalist everyday tunic silhouette in pure woven cotton with delicate pintuck details at the neckline.",
+    details: ["Pintuck neckline","Pure woven cotton","Tunic length"], fabricAndCare: CARE, stylingNote: "Cream trousers keep it calm and polished.",
+  },
+  {
+    id: "set-noor-sage", slug: "noor-embroidered-kurta-pant-set", name: "Noor Embroidered Kurta & Pant Set", category: "kurta-sets",
+    price: 1399, compareAtPrice: 2499, colorName: "Sage Green", colorGroup: "Green", colorHex: "#8fa58a",
+    sizes: ["S","M","L","XL","XXL"], images: [setNoor], inStock: true, isNew: true, isBestSeller: false,
+    description: "A calming sage green 2-piece set featuring delicate zari yoke embroidery, matching straight cigarette pants with an elasticated waistband, and side pockets.",
+    details: ["Zari yoke embroidery","Cigarette pants, elasticated waist","Side pockets"], fabricAndCare: CARE, stylingNote: "Gold juttis and small jhumkas finish it.",
+  },
+  {
+    id: "set-chandni-ivory", slug: "chandni-cotton-kurta-set-mulmul-dupatta", name: "Chandni Cotton Kurta Set with Mulmul Dupatta", category: "kurta-sets",
+    price: 1699, compareAtPrice: 2899, colorName: "Warm Ivory & Gold", colorGroup: "White", colorHex: "#efe6d2",
+    sizes: ["XS","S","M","L","XL"], images: [setChandni], inStock: true, isNew: true, isBestSeller: false,
+    description: "A luminous cream cotton kurta set adorned with understated gota lace detailing, paired with tapered pants and a featherlight printed mulmul dupatta.",
+    details: ["Gota lace detailing","Tapered pants","Printed mulmul dupatta"], fabricAndCare: CARE, stylingNote: "Festive-ready with gold juttis.",
+  },
+  {
+    id: "coord-zoya-sand", slug: "zoya-linen-blend-relaxed-coord-set", name: "Zoya Linen-Blend Relaxed Co-Ord Set", category: "co-ord-sets",
+    price: 1499, compareAtPrice: 2599, colorName: "Sand Beige", colorGroup: "Beige", colorHex: "#cfc3ae",
+    sizes: ["XS","S","M","L","XL"], images: [coordZoya], inStock: true, isNew: true, isBestSeller: false,
+    description: "A contemporary two-piece set featuring an easy drop-shoulder collared tunic top and relaxed wide-leg ankle trousers in breathable linen blend.",
+    details: ["Drop-shoulder collared top","Wide-leg ankle trousers","Linen blend"], fabricAndCare: CARE, stylingNote: "White sneakers by day, slides by evening.",
+  },
+  {
+    id: "coord-maya-rust", slug: "maya-floral-printed-peplum-coord-set", name: "Maya Floral Printed Peplum Co-Ord Set", category: "co-ord-sets",
+    price: 1299, compareAtPrice: 2399, colorName: "Rust & Ochre", colorGroup: "Rust", colorHex: "#b35a2b",
+    sizes: ["S","M","L","XL"], images: [coordMaya], inStock: true, isNew: true, isBestSeller: false,
+    description: "An effortless fusion two-piece set with a flared peplum waist tunic and matching tailored culottes, crafted in soft modal cotton.",
+    details: ["Flared peplum top","Tailored culottes","Soft modal cotton"], fabricAndCare: CARE, stylingNote: "Nude block heels and gold hoops.",
+  },
   {
     id: "de-001",
     slug: "sahar-block-print-kurti",
