@@ -88,7 +88,7 @@ export function Header() {
 
         <nav
           aria-label="Primary"
-          className="hidden items-center gap-7 lg:flex"
+          className="hidden items-center gap-5 whitespace-nowrap lg:flex xl:gap-7"
         >
           {navLinks.map((l) => (
             <Link

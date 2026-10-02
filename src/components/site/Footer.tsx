@@ -58,7 +58,7 @@ export function Footer() {
     <footer className="border-t border-border bg-background">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 md:grid-cols-2 md:px-8 lg:grid-cols-4">
         <div>
-          <Logo size="lg" />
+          <Logo size="lg" fullArtwork />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
             Desi Era — contemporary Indian ethnicwear designed for everyday
             wear. Kurtis, kurtas and sets made to be styled your way.
