@@ -131,11 +131,9 @@ function Home() {
                   loading="lazy"
                   className="aspect-3/4 w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                {(c.slug === "kurta-sets" || c.slug === "co-ord-sets") && (
-                  <span className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-background/85 px-5 py-2.5 text-[0.625rem] uppercase tracking-[0.14em] text-foreground shadow-sm backdrop-blur-sm">
-                    {c.slug === "kurta-sets" ? "Explore Sets" : "Explore Co-Ords"}
-                  </span>
-                )}
+                <span className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-background/85 px-5 py-2.5 text-[0.625rem] uppercase tracking-[0.14em] text-foreground shadow-sm backdrop-blur-sm">
+                  {{ kurtis: "Explore Kurtis", kurtas: "Explore Kurtas", "kurta-sets": "Explore Sets", "co-ord-sets": "Explore Co-Ords" }[c.slug]}
+                </span>
               </div>
               <h3 className="mt-4 text-xl transition-colors group-hover:text-accent">
                 {c.name}
