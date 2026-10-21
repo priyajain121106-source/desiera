@@ -1,0 +1,53 @@
+/**
+ * Route wiring helper: gives every storefront page the same loader + head
+ * plumbing. The loader resolves metadata from the backend (or falls back to
+ * the hardcoded registry when the backend is unreachable); head renders it.
+ */
+import { getSeoForPath } from "./seo-data.functions";
+import { resolveSeo, type SeoHeadData } from "./seo-resolve";
+import type { AnyRouteMatch } from "@tanstack/react-router";
+
+function headFrom(data: SeoHeadData) {
+  const meta: Record<string, string>[] = [
+    { title: data.title },
+    { name: "description", content: data.description },
+    { property: "og:title", content: data.ogTitle },
+    { property: "og:description", content: data.ogDescription },
+    { property: "og:type", content: data.ogType },
+    { property: "og:url", content: data.canonicalUrl },
+    { property: "og:image", content: data.ogImageUrl },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:image", content: data.ogImageUrl },
+  ];
+  if (!data.index || !data.follow) {
+    meta.push({
+      name: "robots",
+      content: `${data.index ? "index" : "noindex"}, ${data.follow ? "follow" : "nofollow"}`,
+    });
+  }
+  return {
+    meta,
+    links: [{ rel: "canonical", href: data.canonicalUrl }],
+    scripts: data.jsonLd ? [{ type: "application/ld+json", children: data.jsonLd }] : [],
+  };
+}
+
+/** The `loader` + `head` pair for a storefront page at `path`. */
+export function seoRoute(path: string) {
+  return {
+    loader: () => getSeoForPath({ data: { path } }),
+    head: ({ loaderData }: { loaderData?: SeoHeadData }) => {
+      const data =
+        loaderData ??
+        resolveSeo({
+          path,
+          record: null,
+          site: null,
+          tokens: {},
+        });
+      return headFrom(data);
+    },
+  };
+}
+
+export type { SeoHeadData };
