@@ -5,7 +5,6 @@
  */
 import { getSeoForPath } from "./seo-data.functions";
 import { resolveSeo, type SeoHeadData } from "./seo-resolve";
-import type { AnyRouteMatch } from "@tanstack/react-router";
 
 function headFrom(data: SeoHeadData) {
   const meta: Record<string, string>[] = [
