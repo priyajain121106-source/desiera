@@ -14,10 +14,10 @@ export interface SeoRegistryEntry {
   title: string;
   description: string;
   /** Extra context available as tokens ({productName} etc.) in saved overrides. */
-  productName?: string;
-  collectionName?: string;
-  price?: number;
-  imageUrl?: string;
+  productName?: string | undefined;
+  collectionName?: string | undefined;
+  price?: number | undefined;
+  imageUrl?: string | undefined;
 }
 
 const CATEGORY_LABEL: Record<string, string> = {
