@@ -32,6 +32,11 @@ function headFrom(data: SeoHeadData) {
   };
 }
 
+/** Render one resolved metadata object as a route `head()` result. */
+export function seoHead(data: SeoHeadData) {
+  return headFrom(data);
+}
+
 /** The `loader` + `head` pair for a storefront page at `path`. */
 export function seoRoute(path: string) {
   return {
