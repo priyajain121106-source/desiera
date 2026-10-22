@@ -1,12 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import {
-import { seoRoute } from "@/lib/seo-route";
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { seoRoute } from "@/lib/seo-route";
 
 export const Route = createFileRoute("/faq")({
   ...seoRoute("/faq"),
