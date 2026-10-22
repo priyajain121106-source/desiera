@@ -2,12 +2,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Button } from "@/components/ui/button";
-import { pageHead } from "@/lib/seo";
 import { products } from "@/data/products";
 import { useStore } from "@/lib/store";
+import { seoRoute } from "@/lib/seo-route";
 
 export const Route = createFileRoute("/wishlist")({
-  head: () => pageHead("Wishlist — Desi Era", "Your saved Desi Era pieces, kept in one place."),
+  ...seoRoute("/wishlist"),
   component: WishlistPage,
 });
 

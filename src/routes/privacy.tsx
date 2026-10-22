@@ -1,13 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { StaticPage, Section } from "@/components/site/StaticPage";
-import { pageHead } from "@/lib/seo";
+import { seoRoute } from "@/lib/seo-route";
 
 export const Route = createFileRoute("/privacy")({
-  head: () =>
-    pageHead(
-      "Privacy Policy — Desi Era",
-      "How Desi Era collects, uses and protects your personal information.",
-    ),
+  ...seoRoute("/privacy"),
   component: PrivacyPage,
 });
 

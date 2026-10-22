@@ -9,14 +9,10 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import { useStore } from "@/lib/store";
 import { formatINR } from "@/data/products";
-import { pageHead } from "@/lib/seo";
+import { seoRoute } from "@/lib/seo-route";
 
 export const Route = createFileRoute("/checkout")({
-  head: () =>
-    pageHead(
-      "Checkout — Desi Era",
-      "Complete your Desi Era order with free shipping across India and Cash on Delivery on eligible pincodes.",
-    ),
+  ...seoRoute("/checkout"),
   component: CheckoutPage,
 });
 

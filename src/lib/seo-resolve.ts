@@ -6,10 +6,10 @@
 import { registryEntry, type SeoRegistryEntry } from "./seo-registry";
 
 export interface SeoTokenContext {
-  productName?: string;
-  collectionName?: string;
-  brand?: string;
-  price?: number;
+  productName?: string | undefined;
+  collectionName?: string | undefined;
+  brand?: string | undefined;
+  price?: number | undefined;
 }
 
 export interface SeoSiteSettings {
@@ -65,15 +65,15 @@ function expandTokens(text: string, tokens: SeoTokenContext): string {
 
 function firstFromChain(
   values: (string | null | undefined)[],
-): { value: string; source: number } | undefined {
-  for (let i = 0; i < values.length; i++) {
+): { value: string; source: 0 | 1 | 2 | 3 } | undefined {
+  for (let i = 0 as 0 | 1 | 2 | 3; i < values.length; i = (i + 1) as 0 | 1 | 2 | 3) {
     const v = values[i];
     if (v != null && v.trim().length > 0) return { value: v.trim(), source: i };
   }
   return undefined;
 }
 
-const LAYER_NAMES = ["Saved setting", "Token template", "Sitewide default", "Hardcoded fallback"];
+const LAYER_NAMES = ["Saved setting", "Token template", "Sitewide default", "Hardcoded fallback"] as const;
 
 export function resolveSeo(args: {
   path: string;
@@ -99,7 +99,7 @@ export function resolveSeo(args: {
   const titleChain = firstFromChain([record?.meta_title, fallback.title]);
   const titleSuffix = site?.title_suffix ?? " — Desi Era";
   let title = titleChain?.value ?? fallback.title;
-  if (titleChain) sources.title = LAYER_NAMES[titleChain.source];
+  if (titleChain) sources["title"] = LAYER_NAMES[titleChain.source];
   // Only apply the suffix when the saved title doesn't already carry it.
   if (record?.meta_title && !title.includes("Desi Era")) title += titleSuffix;
 
@@ -108,21 +108,21 @@ export function resolveSeo(args: {
     fallback.description,
   ]);
   const description = descriptionChain?.value ?? fallback.description;
-  if (descriptionChain) sources.description = LAYER_NAMES[descriptionChain.source];
+  if (descriptionChain) sources["description"] = LAYER_NAMES[descriptionChain.source];
 
   const ogTitleChain = firstFromChain([
     record?.og_title ? expandTokens(record.og_title, tokens) : null,
     title,
   ]);
   const ogTitle = ogTitleChain?.value ?? title;
-  if (ogTitleChain) sources.ogTitle = LAYER_NAMES[ogTitleChain.source];
+  if (ogTitleChain) sources["ogTitle"] = LAYER_NAMES[ogTitleChain.source];
 
   const ogDescriptionChain = firstFromChain([
     record?.og_description ? expandTokens(record.og_description, tokens) : null,
     description,
   ]);
   const ogDescription = ogDescriptionChain?.value ?? description;
-  if (ogDescriptionChain) sources.ogDescription = LAYER_NAMES[ogDescriptionChain.source];
+  if (ogDescriptionChain) sources["ogDescription"] = LAYER_NAMES[ogDescriptionChain.source];
 
   const ogImageChain = firstFromChain([
     record?.og_image_url,
@@ -131,7 +131,7 @@ export function resolveSeo(args: {
     "https://desiera.shop/og-desi-era.jpg",
   ]);
   const ogImageUrl = ogImageChain?.value ?? "https://desiera.shop/og-desi-era.jpg";
-  if (ogImageChain) sources.ogImageUrl = LAYER_NAMES[ogImageChain.source];
+  if (ogImageChain) sources["ogImageUrl"] = LAYER_NAMES[ogImageChain.source];
 
   const canonicalPath = record?.slug_override ? `/product/${record.slug_override}` : path;
   const canonicalChain = firstFromChain([
@@ -139,12 +139,12 @@ export function resolveSeo(args: {
     site?.site_url ? `${site.site_url}${canonicalPath}` : `https://desiera.shop${canonicalPath}`,
   ]);
   const canonicalUrl = canonicalChain?.value ?? `https://desiera.shop${canonicalPath}`;
-  if (canonicalChain) sources.canonicalUrl = LAYER_NAMES[canonicalChain.source];
+  if (canonicalChain) sources["canonicalUrl"] = LAYER_NAMES[canonicalChain.source];
 
   const index = record ? record.robots_index : true;
   const follow = record ? record.robots_follow : true;
   const jsonLd = record?.json_ld ? JSON.stringify(record.json_ld) : null;
-  if (jsonLd) sources.jsonLd = LAYER_NAMES[0];
+  if (jsonLd) sources["jsonLd"] = LAYER_NAMES[0];
 
   return {
     title,

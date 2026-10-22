@@ -3,8 +3,11 @@ import {
   createFileRoute,
   Link,
   notFound,
+  redirect,
   useNavigate,
 } from "@tanstack/react-router";
+import { getSeoForPath, resolveRedirect } from "@/lib/seo-data.functions";
+import { seoHead } from "@/lib/seo-route";
 import {
   Heart,
   Minus,
@@ -35,14 +38,27 @@ import { useStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/product/$slug")({
-  loader: ({ params }) => {
+  loader: async ({ params }) => {
     const product = productBySlug(params.slug);
-    if (!product) throw notFound();
-    return { product };
+    if (!product) {
+      // Honor admin-managed slug redirects before declaring the piece gone.
+      const { to } = await resolveRedirect({ data: { from: `/product/${params.slug}` } });
+      if (to) throw redirect({ href: to });
+      throw notFound();
+    }
+    const seo = await getSeoForPath({
+      data: {
+        path: `/product/${params.slug}`,
+        productName: product.name,
+        collectionName: categoryBySlug(product.category)?.name ?? product.category,
+        price: product.price,
+      },
+    });
+    return { product, seo };
   },
   head: ({ loaderData }) => {
     const p = loaderData?.product;
-    if (!p) {
+    if (!p || !loaderData.seo) {
       return {
         meta: [
           { title: "Product unavailable — Desi Era" },
@@ -50,18 +66,7 @@ export const Route = createFileRoute("/product/$slug")({
         ],
       };
     }
-    const title = `${p.name} — Desi Era`;
-    const description = p.description.slice(0, 155);
-    return {
-      meta: [
-        { title },
-        { name: "description", content: description },
-        { property: "og:title", content: title },
-        { property: "og:description", content: description },
-        { property: "og:type", content: "product" },
-        { name: "twitter:card", content: "summary_large_image" },
-      ],
-    };
+    return seoHead(loaderData.seo);
   },
   component: ProductPage,
   errorComponent: () => (

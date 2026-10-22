@@ -1,13 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { StaticPage, Section } from "@/components/site/StaticPage";
-import { pageHead } from "@/lib/seo";
+import { seoRoute } from "@/lib/seo-route";
 
 export const Route = createFileRoute("/terms")({
-  head: () =>
-    pageHead(
-      "Terms & Conditions — Desi Era",
-      "The terms that govern your use of the Desi Era website and any order you place with us.",
-    ),
+  ...seoRoute("/terms"),
   component: TermsPage,
 });
 

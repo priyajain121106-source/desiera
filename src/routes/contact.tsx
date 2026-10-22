@@ -7,14 +7,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { pageHead } from "@/lib/seo";
+import { seoRoute } from "@/lib/seo-route";
 
 export const Route = createFileRoute("/contact")({
-  head: () =>
-    pageHead(
-      "Contact Us — Desi Era",
-      "Questions about fit, fabric, an order or an exchange? Get in touch with the Desi Era team.",
-    ),
+  ...seoRoute("/contact"),
   component: ContactPage,
 });
 

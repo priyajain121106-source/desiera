@@ -1,13 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { StaticPage, Section } from "@/components/site/StaticPage";
-import { pageHead } from "@/lib/seo";
+import { seoRoute } from "@/lib/seo-route";
 
 export const Route = createFileRoute("/size-guide")({
-  head: () =>
-    pageHead(
-      "Size Guide — Desi Era",
-      "Body measurements and fit guidance for Desi Era kurtis, kurtas, kurta sets and co-ord sets.",
-    ),
+  ...seoRoute("/size-guide"),
   component: SizeGuidePage,
 });
 

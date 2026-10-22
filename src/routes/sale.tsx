@@ -1,16 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CollectionView } from "@/components/site/CollectionView";
-import { pageHead } from "@/lib/seo";
 import { products } from "@/data/products";
+import { seoRoute } from "@/lib/seo-route";
 
 const onSale = products.filter((p) => p.compareAtPrice);
 
 export const Route = createFileRoute("/sale")({
-  head: () =>
-    pageHead(
-      "Sale — Desi Era",
-      "Reduced kurtis, kurtas and sets from Desi Era. Limited pieces, limited sizes.",
-    ),
+  ...seoRoute("/sale"),
   component: SalePage,
 });
 

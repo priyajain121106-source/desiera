@@ -1,17 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CollectionView } from "@/components/site/CollectionView";
-import { pageHead } from "@/lib/seo";
 import { categoryBySlug, productsByCategory } from "@/data/products";
+import { seoRoute } from "@/lib/seo-route";
 
 const category = categoryBySlug("kurtis")!;
 const items = productsByCategory("kurtis");
 
 export const Route = createFileRoute("/kurtis")({
-  head: () =>
-    pageHead(
-      "Women's Kurtis — Desi Era",
-      "Shop women's Kurtis at Desi Era for everyday wear. Free shipping across India, Cash on Delivery available.",
-    ),
+  ...seoRoute("/kurtis"),
   component: CategoryPage,
 });
 

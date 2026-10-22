@@ -1,14 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { StaticPage, Section } from "@/components/site/StaticPage";
 import { editorialImage } from "@/data/products";
-import { pageHead } from "@/lib/seo";
+import { seoRoute } from "@/lib/seo-route";
 
 export const Route = createFileRoute("/about")({
-  head: () =>
-    pageHead(
-      "About Desi Era — Desi Era",
-      "Desi Era is a contemporary Indian ethnicwear label making kurtis, kurtas and sets designed for everyday wear.",
-    ),
+  ...seoRoute("/about"),
   component: AboutPage,
 });
 

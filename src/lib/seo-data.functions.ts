@@ -4,7 +4,7 @@
  * - Writes require a signed-in user with the `admin` role (re-verified here).
  */
 import { createServerFn } from "@tanstack/react-start";
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { registryEntry, isKnownPath } from "./seo-registry";
@@ -82,11 +82,14 @@ export const resolveRedirect = createServerFn({ method: "GET" })
     }
   });
 
-async function requireAdmin(context: { supabase: Database[never]; userId: string }) {
-  const { data: isAdmin } = await context.supabase.rpc("has_role", {
+type Supabase = SupabaseClient<Database>;
+
+async function requireAdmin(context: { supabase: Supabase; userId: string }) {
+  const { data: isAdmin, error } = await context.supabase.rpc("has_role", {
     _user_id: context.userId,
     _role: "admin",
   });
+  if (error) throw new Error(error.message);
   if (!isAdmin) throw new Error("Forbidden: admin role required");
 }
 
@@ -159,7 +162,7 @@ export const saveSeoSetting = createServerFn({ method: "POST" })
     }
 
     const slugOverride = data.page_type === "product" ? sanitizeSlug(data.slug_override) : null;
-    const row = {
+    const insert: Database["public"]["Tables"]["seo_settings"]["Insert"] = {
       page_path,
       page_type: data.page_type,
       meta_title: data.meta_title?.trim() || null,
@@ -171,12 +174,12 @@ export const saveSeoSetting = createServerFn({ method: "POST" })
       robots_index: data.robots_index,
       robots_follow: data.robots_follow,
       focus_keyword: data.focus_keyword?.trim() || null,
-      json_ld: jsonLd,
+      json_ld: (jsonLd ?? null) as never,
       slug_override: slugOverride,
       sitemap_include: data.sitemap_include,
     };
 
-    const { error } = await supabase.from("seo_settings").upsert(row, { onConflict: "page_path" });
+    const { error } = await supabase.from("seo_settings").upsert(insert, { onConflict: "page_path" });
     if (error) throw new Error(error.message);
 
     // Editing a product slug auto-creates the redirect from the old URL.
@@ -199,13 +202,22 @@ export const saveSiteSettings = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     await requireAdmin(context as never);
     const supabase = getPublicSupabase();
-    const patch: Record<string, unknown> = { updated_at: new Date().toISOString() };
+    const patch: Database["public"]["Tables"]["seo_site_settings"]["Update"] = {
+      updated_at: new Date().toISOString(),
+    };
     if (data.site_name !== undefined) patch["site_name"] = data.site_name.trim() || "Desi Era";
     if (data.title_suffix !== undefined) patch["title_suffix"] = data.title_suffix;
     if (data.default_description !== undefined) patch["default_description"] = data.default_description.trim();
-    if (data.default_og_image_url !== undefined)
-      patch["default_og_image_url"] = sanitizeUrl(data.default_og_image_url, "Default social image");
-    if (data.site_url !== undefined) patch["site_url"] = sanitizeUrl(data.site_url, "Site URL");
+    if (data.default_og_image_url !== undefined) {
+      const v = sanitizeUrl(data.default_og_image_url, "Default social image");
+      if (!v) throw new Error("Default social image must be an absolute https:// URL");
+      patch["default_og_image_url"] = v;
+    }
+    if (data.site_url !== undefined) {
+      const v = sanitizeUrl(data.site_url, "Site URL");
+      if (!v) throw new Error("Site URL must be an absolute https:// URL");
+      patch["site_url"] = v;
+    }
     if (data.robots_preset !== undefined) {
       if (!["normal", "maintenance"].includes(data.robots_preset)) throw new Error("Unknown robots preset");
       patch["robots_preset"] = data.robots_preset;

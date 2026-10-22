@@ -6,14 +6,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { pageHead } from "@/lib/seo";
+import { seoRoute } from "@/lib/seo-route";
 
 export const Route = createFileRoute("/faq")({
-  head: () =>
-    pageHead(
-      "FAQ — Desi Era",
-      "Answers on sizing, fabrics, shipping, Cash on Delivery, exchanges and order tracking at Desi Era.",
-    ),
+  ...seoRoute("/faq"),
   component: FaqPage,
 });
 

@@ -5,7 +5,6 @@
  */
 import { getSeoForPath } from "./seo-data.functions";
 import { resolveSeo, type SeoHeadData } from "./seo-resolve";
-import type { AnyRouteMatch } from "@tanstack/react-router";
 
 function headFrom(data: SeoHeadData) {
   const meta: Record<string, string>[] = [
@@ -30,6 +29,11 @@ function headFrom(data: SeoHeadData) {
     links: [{ rel: "canonical", href: data.canonicalUrl }],
     scripts: data.jsonLd ? [{ type: "application/ld+json", children: data.jsonLd }] : [],
   };
+}
+
+/** Render one resolved metadata object as a route `head()` result. */
+export function seoHead(data: SeoHeadData) {
+  return headFrom(data);
 }
 
 /** The `loader` + `head` pair for a storefront page at `path`. */

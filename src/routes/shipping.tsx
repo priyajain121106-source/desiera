@@ -1,13 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { StaticPage, Section } from "@/components/site/StaticPage";
-import { pageHead } from "@/lib/seo";
+import { seoRoute } from "@/lib/seo-route";
 
 export const Route = createFileRoute("/shipping")({
-  head: () =>
-    pageHead(
-      "Shipping & Delivery — Desi Era",
-      "Shipping timelines, Cash on Delivery availability and order tracking for Desi Era orders across India.",
-    ),
+  ...seoRoute("/shipping"),
   component: ShippingPage,
 });
 

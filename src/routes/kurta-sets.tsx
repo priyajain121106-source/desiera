@@ -1,17 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CollectionView } from "@/components/site/CollectionView";
-import { pageHead } from "@/lib/seo";
 import { categoryBySlug, productsByCategory } from "@/data/products";
+import { seoRoute } from "@/lib/seo-route";
 
 const category = categoryBySlug("kurta-sets")!;
 const items = productsByCategory("kurta-sets");
 
 export const Route = createFileRoute("/kurta-sets")({
-  head: () =>
-    pageHead(
-      "Women's Kurta Sets — Desi Era",
-      "Shop women's Kurta Sets at Desi Era for everyday wear. Free shipping across India, Cash on Delivery available.",
-    ),
+  ...seoRoute("/kurta-sets"),
   component: CategoryPage,
 });
 
