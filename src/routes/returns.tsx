@@ -1,13 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { StaticPage, Section } from "@/components/site/StaticPage";
-import { pageHead } from "@/lib/seo";
+import { seoRoute } from "@/lib/seo-route";
 
 export const Route = createFileRoute("/returns")({
-  head: () =>
-    pageHead(
-      "Returns & Exchange — Desi Era",
-      "How to request a return or size exchange on Desi Era kurtis, kurtas and sets.",
-    ),
+  ...seoRoute("/returns"),
   component: ReturnsPage,
 });
 

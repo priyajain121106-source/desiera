@@ -1,19 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import {
+import { seoRoute } from "@/lib/seo-route";
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/faq")({
-  head: () =>
-    pageHead(
-      "FAQ — Desi Era",
-      "Answers on sizing, fabrics, shipping, Cash on Delivery, exchanges and order tracking at Desi Era.",
-    ),
+  ...seoRoute("/faq"),
   component: FaqPage,
 });
 

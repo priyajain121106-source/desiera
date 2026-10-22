@@ -11,28 +11,10 @@ import {
 import { ProductCard } from "@/components/site/ProductCard";
 import { Newsletter } from "@/components/site/Footer";
 import bannerStyling from "@/assets/banner-styling.jpg";
+import { seoRoute } from "@/lib/seo-route";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Desi Era — Everyday Indian, Effortlessly Elevated" },
-      {
-        name: "description",
-        content:
-          "Contemporary kurtis, kurtas, kurta sets and co-ord sets from Desi Era. Free shipping across India with Cash on Delivery available.",
-      },
-      { property: "og:title", content: "Desi Era — Everyday Indian, Effortlessly Elevated" },
-      {
-        property: "og:description",
-        content:
-          "Contemporary kurtis, kurtas, kurta sets and co-ord sets designed for everyday wear.",
-      },
-      { property: "og:url", content: "https://desiera.shop/" },
-      { property: "og:image", content: "https://desiera.shop/og-desi-era.jpg" },
-      { name: "twitter:image", content: "https://desiera.shop/og-desi-era.jpg" },
-    ],
-    links: [{ rel: "canonical", href: "https://desiera.shop/" }],
-  }),
+  ...seoRoute("/"),
   component: Home,
 });
 

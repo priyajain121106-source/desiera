@@ -5,14 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useStore } from "@/lib/store";
 import { formatINR } from "@/data/products";
-import { pageHead } from "@/lib/seo";
+import { seoRoute } from "@/lib/seo-route";
 
 export const Route = createFileRoute("/cart")({
-  head: () =>
-    pageHead(
-      "Shopping Bag — Desi Era",
-      "Review the kurtis, kurtas and sets in your Desi Era shopping bag before checkout.",
-    ),
+  ...seoRoute("/cart"),
   component: CartPage,
 });
 

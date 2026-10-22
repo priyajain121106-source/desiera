@@ -1,11 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import { Button } from "@/components/ui/button";
-import { pageHead } from "@/lib/seo";
+import { seoRoute } from "@/lib/seo-route";
 
 export const Route = createFileRoute("/account")({
-  head: () =>
-    pageHead("Account — Desi Era", "Sign in to your Desi Era account to track orders and manage addresses."),
+  ...seoRoute("/account"),
   component: AccountPage,
 });
 

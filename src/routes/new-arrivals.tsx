@@ -1,14 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CollectionView } from "@/components/site/CollectionView";
-import { pageHead } from "@/lib/seo";
 import { newArrivals } from "@/data/products";
+import { seoRoute } from "@/lib/seo-route";
 
 export const Route = createFileRoute("/new-arrivals")({
-  head: () =>
-    pageHead(
-      "New Arrivals — Desi Era",
-      "The newest kurtis, kurtas and sets from Desi Era. Fresh silhouettes for everyday Indian dressing.",
-    ),
+  ...seoRoute("/new-arrivals"),
   component: NewArrivals,
 });
 

@@ -1,14 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CollectionView } from "@/components/site/CollectionView";
-import { pageHead } from "@/lib/seo";
 import { products } from "@/data/products";
+import { seoRoute } from "@/lib/seo-route";
 
 export const Route = createFileRoute("/shop")({
-  head: () =>
-    pageHead(
-      "Shop All — Desi Era",
-      "Browse the full Desi Era collection of kurtis, kurtas, kurta sets and co-ord sets.",
-    ),
+  ...seoRoute("/shop"),
   component: ShopPage,
 });
 

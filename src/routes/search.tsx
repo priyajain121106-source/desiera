@@ -5,19 +5,15 @@ import { CollectionView } from "@/components/site/CollectionView";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { pageHead } from "@/lib/seo";
 import { bestSellers, categories, products } from "@/data/products";
+import { seoRoute } from "@/lib/seo-route";
 
 export const Route = createFileRoute("/search")({
   validateSearch: (search: Record<string, unknown>) => ({
     q: typeof search["q"] === "string" ? search["q"] : "",
   }),
 
-  head: () =>
-    pageHead(
-      "Search — Desi Era",
-      "Search the Desi Era collection of kurtis, kurtas, kurta sets and co-ord sets.",
-    ),
+  ...seoRoute("/search"),
   component: SearchPage,
 });
 
