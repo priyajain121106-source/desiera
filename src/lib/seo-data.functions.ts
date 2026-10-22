@@ -4,7 +4,7 @@
  * - Writes require a signed-in user with the `admin` role (re-verified here).
  */
 import { createServerFn } from "@tanstack/react-start";
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { registryEntry, isKnownPath } from "./seo-registry";
@@ -82,7 +82,7 @@ export const resolveRedirect = createServerFn({ method: "GET" })
     }
   });
 
-type Supabase = InstanceType<typeof createClient<Database>>;
+type Supabase = SupabaseClient<Database>;
 
 async function requireAdmin(context: { supabase: Supabase; userId: string }) {
   const { data: isAdmin, error } = await context.supabase.rpc("has_role", {
@@ -174,7 +174,7 @@ export const saveSeoSetting = createServerFn({ method: "POST" })
       robots_index: data.robots_index,
       robots_follow: data.robots_follow,
       focus_keyword: data.focus_keyword?.trim() || null,
-      json_ld: (jsonLd ?? null) as Database["public"]["Tables"]["seo_settings"]["Insert"]["json_ld"],
+      json_ld: (jsonLd ?? null) as never,
       slug_override: slugOverride,
       sitemap_include: data.sitemap_include,
     };
@@ -208,9 +208,16 @@ export const saveSiteSettings = createServerFn({ method: "POST" })
     if (data.site_name !== undefined) patch["site_name"] = data.site_name.trim() || "Desi Era";
     if (data.title_suffix !== undefined) patch["title_suffix"] = data.title_suffix;
     if (data.default_description !== undefined) patch["default_description"] = data.default_description.trim();
-    if (data.default_og_image_url !== undefined)
-      patch["default_og_image_url"] = sanitizeUrl(data.default_og_image_url, "Default social image");
-    if (data.site_url !== undefined) patch["site_url"] = sanitizeUrl(data.site_url, "Site URL");
+    if (data.default_og_image_url !== undefined) {
+      const v = sanitizeUrl(data.default_og_image_url, "Default social image");
+      if (!v) throw new Error("Default social image must be an absolute https:// URL");
+      patch["default_og_image_url"] = v;
+    }
+    if (data.site_url !== undefined) {
+      const v = sanitizeUrl(data.site_url, "Site URL");
+      if (!v) throw new Error("Site URL must be an absolute https:// URL");
+      patch["site_url"] = v;
+    }
     if (data.robots_preset !== undefined) {
       if (!["normal", "maintenance"].includes(data.robots_preset)) throw new Error("Unknown robots preset");
       patch["robots_preset"] = data.robots_preset;

@@ -65,8 +65,8 @@ function expandTokens(text: string, tokens: SeoTokenContext): string {
 
 function firstFromChain(
   values: (string | null | undefined)[],
-): { value: string; source: number } | undefined {
-  for (let i = 0; i < values.length; i++) {
+): { value: string; source: 0 | 1 | 2 | 3 } | undefined {
+  for (let i = 0 as 0 | 1 | 2 | 3; i < values.length; i = (i + 1) as 0 | 1 | 2 | 3) {
     const v = values[i];
     if (v != null && v.trim().length > 0) return { value: v.trim(), source: i };
   }
