@@ -255,3 +255,14 @@ export const deleteRedirect = createServerFn({ method: "POST" })
     if (error) throw new Error(error.message);
     return { ok: true };
   });
+
+/** Authenticated: does the signed-in user hold the admin role? */
+export const isCurrentUserAdmin = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }): Promise<{ admin: boolean; userId: string }> => {
+    const { data: isAdmin } = await (context.supabase as Supabase).rpc("has_role", {
+      _user_id: context.userId,
+      _role: "admin",
+    });
+    return { admin: isAdmin === true, userId: context.userId };
+  });
