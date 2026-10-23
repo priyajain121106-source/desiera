@@ -127,7 +127,7 @@ export function resolveSeo(args: {
   const ogImageChain = firstFromChain([
     record?.og_image_url,
     site?.default_og_image_url,
-    fallback.imageUrl,
+    fallback.imageUrl?.startsWith("https://") ? fallback.imageUrl : null,
     "https://desiera.shop/og-desi-era.jpg",
   ]);
   const ogImageUrl = ogImageChain?.value ?? "https://desiera.shop/og-desi-era.jpg";

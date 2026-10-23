@@ -14,10 +14,13 @@ function headFrom(data: SeoHeadData) {
     { property: "og:description", content: data.ogDescription },
     { property: "og:type", content: data.ogType },
     { property: "og:url", content: data.canonicalUrl },
-    { property: "og:image", content: data.ogImageUrl },
-    { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:image", content: data.ogImageUrl },
   ];
+  // Social crawlers need an absolute URL; hosting injects a preview otherwise.
+  if (data.ogImageUrl.startsWith("https://")) {
+    meta.push({ property: "og:image", content: data.ogImageUrl });
+    meta.push({ name: "twitter:image", content: data.ogImageUrl });
+  }
+  meta.push({ name: "twitter:card", content: "summary_large_image" });
   if (!data.index || !data.follow) {
     meta.push({
       name: "robots",
