@@ -73,7 +73,7 @@ function SeoDashboard() {
         description: resolved.description,
         ogImageUrl: resolved.ogImageUrl,
         canonicalUrl: resolved.canonicalUrl,
-        focusKeyword: record?.focus_keyword,
+        focusKeyword: record?.focus_keyword ?? null,
         index: resolved.index,
         follow: resolved.follow,
         sitemapInclude: record ? record.sitemap_include : entry.type !== "utility",
