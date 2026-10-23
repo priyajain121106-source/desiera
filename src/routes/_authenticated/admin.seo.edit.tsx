@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, createFileRoute, useRouter } from "@tanstack/react-router";
-import { useMutation, useQuery, useQueryClient, useServerFn } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { saveSeoSetting } from "@/lib/seo-data.functions";
@@ -19,7 +20,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 export const Route = createFileRoute("/_authenticated/admin/seo/edit")({
   validateSearch: (search: Record<string, unknown>) => ({
-    path: typeof search.path === "string" ? search.path : "/",
+    path: typeof search["path"] === "string" ? search["path"] : "/",
   }),
   component: SeoEditor,
 });
@@ -155,7 +156,7 @@ function SeoEditor() {
   const resolved = resolveSeo({
     path,
     record,
-    site: siteRows,
+    site: siteRows ?? null,
     tokens: {
       productName: entry.productName,
       collectionName: entry.collectionName,
