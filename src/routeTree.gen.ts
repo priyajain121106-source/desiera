@@ -35,6 +35,7 @@ import { Route as WishlistRouteImport } from './routes/wishlist'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 import { Route as AuthenticatedAdminSeoRouteImport } from './routes/_authenticated/admin.seo'
+import { Route as AuthenticatedAdminSeoEditRouteImport } from './routes/_authenticated/admin.seo.edit'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -165,6 +166,12 @@ const AuthenticatedAdminSeoRoute = AuthenticatedAdminSeoRouteImport.update({
   path: '/seo',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
+const AuthenticatedAdminSeoEditRoute =
+  AuthenticatedAdminSeoEditRouteImport.update({
+    id: '/edit',
+    path: '/edit',
+    getParentRoute: () => AuthenticatedAdminSeoRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -191,7 +198,8 @@ export interface FileRoutesByFullPath {
   '/wishlist': typeof WishlistRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/product/$slug': typeof ProductSlugRoute
-  '/admin/seo': typeof AuthenticatedAdminSeoRoute
+  '/admin/seo': typeof AuthenticatedAdminSeoRouteWithChildren
+  '/admin/seo/edit': typeof AuthenticatedAdminSeoEditRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -218,7 +226,8 @@ export interface FileRoutesByTo {
   '/wishlist': typeof WishlistRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/product/$slug': typeof ProductSlugRoute
-  '/admin/seo': typeof AuthenticatedAdminSeoRoute
+  '/admin/seo': typeof AuthenticatedAdminSeoRouteWithChildren
+  '/admin/seo/edit': typeof AuthenticatedAdminSeoEditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -247,7 +256,8 @@ export interface FileRoutesById {
   '/wishlist': typeof WishlistRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/product/$slug': typeof ProductSlugRoute
-  '/_authenticated/admin/seo': typeof AuthenticatedAdminSeoRoute
+  '/_authenticated/admin/seo': typeof AuthenticatedAdminSeoRouteWithChildren
+  '/_authenticated/admin/seo/edit': typeof AuthenticatedAdminSeoEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -277,6 +287,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/product/$slug'
     | '/admin/seo'
+    | '/admin/seo/edit'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -304,6 +315,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/product/$slug'
     | '/admin/seo'
+    | '/admin/seo/edit'
   id:
     | '__root__'
     | '/'
@@ -332,6 +344,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin'
     | '/product/$slug'
     | '/_authenticated/admin/seo'
+    | '/_authenticated/admin/seo/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -545,15 +558,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminSeoRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/seo/edit': {
+      id: '/_authenticated/admin/seo/edit'
+      path: '/edit'
+      fullPath: '/admin/seo/edit'
+      preLoaderRoute: typeof AuthenticatedAdminSeoEditRouteImport
+      parentRoute: typeof AuthenticatedAdminSeoRoute
+    }
   }
 }
 
+interface AuthenticatedAdminSeoRouteChildren {
+  AuthenticatedAdminSeoEditRoute: typeof AuthenticatedAdminSeoEditRoute
+}
+
+const AuthenticatedAdminSeoRouteChildren: AuthenticatedAdminSeoRouteChildren = {
+  AuthenticatedAdminSeoEditRoute: AuthenticatedAdminSeoEditRoute,
+}
+
+const AuthenticatedAdminSeoRouteWithChildren =
+  AuthenticatedAdminSeoRoute._addFileChildren(
+    AuthenticatedAdminSeoRouteChildren,
+  )
+
 interface AuthenticatedAdminRouteChildren {
-  AuthenticatedAdminSeoRoute: typeof AuthenticatedAdminSeoRoute
+  AuthenticatedAdminSeoRoute: typeof AuthenticatedAdminSeoRouteWithChildren
 }
 
 const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
-  AuthenticatedAdminSeoRoute: AuthenticatedAdminSeoRoute,
+  AuthenticatedAdminSeoRoute: AuthenticatedAdminSeoRouteWithChildren,
 }
 
 const AuthenticatedAdminRouteWithChildren =
