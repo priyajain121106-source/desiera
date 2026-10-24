@@ -7,7 +7,8 @@ import {
   useNavigate,
 } from "@tanstack/react-router";
 import { getSeoForPath, resolveRedirect } from "@/lib/seo-data.functions";
-import { seoHead } from "@/lib/seo-route";
+import { seoHead, type SeoHeadData } from "@/lib/seo-route";
+import { resolveSeo } from "@/lib/seo-resolve";
 import {
   Heart,
   Minus,
@@ -51,7 +52,7 @@ export const Route = createFileRoute("/product/$slug")({
       if (to) throw redirect({ href: to });
       throw notFound();
     }
-    let seo;
+    let seo: SeoHeadData;
     try {
       seo = await getSeoForPath({
         data: {
