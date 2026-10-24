@@ -138,7 +138,8 @@ export const saveSeoSetting = createServerFn({ method: "POST" })
   .inputValidator((input: SeoSettingInput) => input)
   .handler(async ({ data, context }) => {
     await requireAdmin(context as never);
-    const supabase = getPublicSupabase();
+    // Writes must go through the bearer-authenticated client so RLS sees the admin user.
+    const supabase = (context as never as { supabase: Supabase }).supabase;
 
     const page_path = normalizePath(data.page_path);
     if (!isKnownPath(page_path)) {
@@ -201,7 +202,7 @@ export const saveSiteSettings = createServerFn({ method: "POST" })
   .inputValidator((input: Partial<SeoSiteSettings> & { robots_preset?: string }) => input)
   .handler(async ({ data, context }) => {
     await requireAdmin(context as never);
-    const supabase = getPublicSupabase();
+    const supabase = (context as never as { supabase: Supabase }).supabase;
     const patch: Database["public"]["Tables"]["seo_site_settings"]["Update"] = {
       updated_at: new Date().toISOString(),
     };
@@ -233,7 +234,7 @@ export const saveRedirect = createServerFn({ method: "POST" })
   .inputValidator((input: { from_path: string; to_path: string }) => input)
   .handler(async ({ data, context }) => {
     await requireAdmin(context as never);
-    const supabase = getPublicSupabase();
+    const supabase = (context as never as { supabase: Supabase }).supabase;
     const from_path = normalizePath(data.from_path);
     const to_path = normalizePath(data.to_path);
     if (from_path === to_path) throw new Error("A redirect cannot point at itself");
@@ -250,7 +251,7 @@ export const deleteRedirect = createServerFn({ method: "POST" })
   .inputValidator((input: { from_path: string }) => input)
   .handler(async ({ data, context }) => {
     await requireAdmin(context as never);
-    const supabase = getPublicSupabase();
+    const supabase = (context as never as { supabase: Supabase }).supabase;
     const { error } = await supabase.from("seo_redirects").delete().eq("from_path", data.from_path);
     if (error) throw new Error(error.message);
     return { ok: true };

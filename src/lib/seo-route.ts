@@ -42,7 +42,20 @@ export function seoHead(data: SeoHeadData) {
 /** The `loader` + `head` pair for a storefront page at `path`. */
 export function seoRoute(path: string) {
   return {
-    loader: () => getSeoForPath({ data: { path } }),
+    loader: async () => {
+      try {
+        return await getSeoForPath({ data: { path } });
+      } catch {
+        // Static prerender (GitHub Pages build) can't call server functions —
+        // fall back to the hardcoded registry so the page still prerenders.
+        return resolveSeo({
+          path,
+          record: null,
+          site: null,
+          tokens: {},
+        });
+      }
+    },
     head: ({ loaderData }: { loaderData?: SeoHeadData }) => {
       const data =
         loaderData ??

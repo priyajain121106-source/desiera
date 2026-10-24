@@ -7,7 +7,8 @@ import {
   useNavigate,
 } from "@tanstack/react-router";
 import { getSeoForPath, resolveRedirect } from "@/lib/seo-data.functions";
-import { seoHead } from "@/lib/seo-route";
+import { seoHead, type SeoHeadData } from "@/lib/seo-route";
+import { resolveSeo } from "@/lib/seo-resolve";
 import {
   Heart,
   Minus,
@@ -42,18 +43,38 @@ export const Route = createFileRoute("/product/$slug")({
     const product = productBySlug(params.slug);
     if (!product) {
       // Honor admin-managed slug redirects before declaring the piece gone.
-      const { to } = await resolveRedirect({ data: { from: `/product/${params.slug}` } });
+      let to: string | null = null;
+      try {
+        to = (await resolveRedirect({ data: { from: `/product/${params.slug}` } })).to;
+      } catch {
+        to = null; // server unavailable (e.g. static prerender) — skip redirect lookup
+      }
       if (to) throw redirect({ href: to });
       throw notFound();
     }
-    const seo = await getSeoForPath({
-      data: {
+    let seo: SeoHeadData;
+    try {
+      seo = await getSeoForPath({
+        data: {
+          path: `/product/${params.slug}`,
+          productName: product.name,
+          collectionName: categoryBySlug(product.category)?.name ?? product.category,
+          price: product.price,
+        },
+      });
+    } catch {
+      // Static prerender fallback: hardcoded metadata for this product.
+      seo = resolveSeo({
         path: `/product/${params.slug}`,
-        productName: product.name,
-        collectionName: categoryBySlug(product.category)?.name ?? product.category,
-        price: product.price,
-      },
-    });
+        record: null,
+        site: null,
+        tokens: {
+          productName: product.name,
+          collectionName: categoryBySlug(product.category)?.name ?? product.category,
+          price: product.price,
+        },
+      });
+    }
     return { product, seo };
   },
   head: ({ loaderData }) => {
