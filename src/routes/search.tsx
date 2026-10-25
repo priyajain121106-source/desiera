@@ -83,7 +83,7 @@ function SearchPage() {
 
   return (
     <CollectionView
-      title={term ? `Search: “${q.trim()}”` : "Search"}
+      title={term ? `Search: “${value.trim()}”` : "Search"}
       description={
         term
           ? `${results.length} ${results.length === 1 ? "piece" : "pieces"} matching your search.`
