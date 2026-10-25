@@ -9,9 +9,12 @@ import { bestSellers, categories, products } from "@/data/products";
 import { seoRoute } from "@/lib/seo-route";
 
 export const Route = createFileRoute("/search")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    q: typeof search["q"] === "string" ? search["q"] : "",
-  }),
+  validateSearch: (search: Record<string, unknown>): { q?: string } =>
+    typeof search["q"] === "string" && search["q"].length > 0
+      ? { q: search["q"] }
+      : // No q param: return nothing so the URL isn't rewritten to /search?q=
+        // (a search-param rewrite redirects during SSR and blocks prerendering).
+        {},
 
   ...seoRoute("/search"),
   component: SearchPage,
@@ -20,9 +23,9 @@ export const Route = createFileRoute("/search")({
 function SearchPage() {
   const { q } = Route.useSearch();
   const navigate = useNavigate();
-  const [value, setValue] = useState(q);
+  const [value, setValue] = useState(q ?? "");
 
-  const term = q.trim().toLowerCase().slice(0, 100);
+  const term = (q ?? "").trim().toLowerCase().slice(0, 100);
   const results = term
     ? products.filter((p) =>
         [p.name, p.colorName, p.category, p.description]
@@ -80,7 +83,7 @@ function SearchPage() {
 
   return (
     <CollectionView
-      title={term ? `Search: “${q.trim()}”` : "Search"}
+      title={term ? `Search: “${value.trim()}”` : "Search"}
       description={
         term
           ? `${results.length} ${results.length === 1 ? "piece" : "pieces"} matching your search.`

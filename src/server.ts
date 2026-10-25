@@ -47,6 +47,15 @@ function isH3SwallowedErrorBody(body: string): boolean {
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      // Serve "/kurtis/" directly (200) instead of redirecting to "/kurtis".
+      // The static prerenderer requests every page with a trailing slash and
+      // refuses to follow redirects (maxRedirects is pinned to 0), so a
+      // trailing-slash redirect made every page except "/" fail to prerender.
+      const url = new URL(request.url);
+      if (url.pathname.length > 1 && url.pathname.endsWith("/")) {
+        url.pathname = url.pathname.replace(/\/+$/, "") || "/";
+        request = new Request(url, request);
+      }
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);
