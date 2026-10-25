@@ -23,7 +23,7 @@ export const Route = createFileRoute("/search")({
 function SearchPage() {
   const { q } = Route.useSearch();
   const navigate = useNavigate();
-  const [value, setValue] = useState(q);
+  const [value, setValue] = useState(q ?? "");
 
   const term = (q ?? "").trim().toLowerCase().slice(0, 100);
   const results = term
