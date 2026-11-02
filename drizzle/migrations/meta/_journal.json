@@ -8,6 +8,13 @@
       "when": 1792562750030,
       "tag": "0000_lov_database_migration",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793624500433,
+      "tag": "0001_create_blog_tables",
+      "breakpoints": true
     }
   ]
 }
