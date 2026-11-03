@@ -34,7 +34,9 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as WishlistRouteImport } from './routes/wishlist'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
+import { Route as AuthenticatedAdminBlogRouteImport } from './routes/_authenticated/admin.blog'
 import { Route as AuthenticatedAdminSeoRouteImport } from './routes/_authenticated/admin.seo'
+import { Route as AuthenticatedAdminBlogEditRouteImport } from './routes/_authenticated/admin.blog.edit'
 import { Route as AuthenticatedAdminSeoEditRouteImport } from './routes/_authenticated/admin.seo.edit'
 import { Route as AuthenticatedAdminSeoRedirectsRouteImport } from './routes/_authenticated/admin.seo.redirects'
 import { Route as AuthenticatedAdminSeoSettingsRouteImport } from './routes/_authenticated/admin.seo.settings'
@@ -163,11 +165,22 @@ const ProductSlugRoute = ProductSlugRouteImport.update({
   path: '/product/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminBlogRoute = AuthenticatedAdminBlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
 const AuthenticatedAdminSeoRoute = AuthenticatedAdminSeoRouteImport.update({
   id: '/seo',
   path: '/seo',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
+const AuthenticatedAdminBlogEditRoute =
+  AuthenticatedAdminBlogEditRouteImport.update({
+    id: '/edit',
+    path: '/edit',
+    getParentRoute: () => AuthenticatedAdminBlogRoute,
+  } as any)
 const AuthenticatedAdminSeoEditRoute =
   AuthenticatedAdminSeoEditRouteImport.update({
     id: '/edit',
@@ -212,7 +225,9 @@ export interface FileRoutesByFullPath {
   '/wishlist': typeof WishlistRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/product/$slug': typeof ProductSlugRoute
+  '/admin/blog': typeof AuthenticatedAdminBlogRouteWithChildren
   '/admin/seo': typeof AuthenticatedAdminSeoRouteWithChildren
+  '/admin/blog/edit': typeof AuthenticatedAdminBlogEditRoute
   '/admin/seo/edit': typeof AuthenticatedAdminSeoEditRoute
   '/admin/seo/redirects': typeof AuthenticatedAdminSeoRedirectsRoute
   '/admin/seo/settings': typeof AuthenticatedAdminSeoSettingsRoute
@@ -242,7 +257,9 @@ export interface FileRoutesByTo {
   '/wishlist': typeof WishlistRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/product/$slug': typeof ProductSlugRoute
+  '/admin/blog': typeof AuthenticatedAdminBlogRouteWithChildren
   '/admin/seo': typeof AuthenticatedAdminSeoRouteWithChildren
+  '/admin/blog/edit': typeof AuthenticatedAdminBlogEditRoute
   '/admin/seo/edit': typeof AuthenticatedAdminSeoEditRoute
   '/admin/seo/redirects': typeof AuthenticatedAdminSeoRedirectsRoute
   '/admin/seo/settings': typeof AuthenticatedAdminSeoSettingsRoute
@@ -274,7 +291,9 @@ export interface FileRoutesById {
   '/wishlist': typeof WishlistRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/product/$slug': typeof ProductSlugRoute
+  '/_authenticated/admin/blog': typeof AuthenticatedAdminBlogRouteWithChildren
   '/_authenticated/admin/seo': typeof AuthenticatedAdminSeoRouteWithChildren
+  '/_authenticated/admin/blog/edit': typeof AuthenticatedAdminBlogEditRoute
   '/_authenticated/admin/seo/edit': typeof AuthenticatedAdminSeoEditRoute
   '/_authenticated/admin/seo/redirects': typeof AuthenticatedAdminSeoRedirectsRoute
   '/_authenticated/admin/seo/settings': typeof AuthenticatedAdminSeoSettingsRoute
@@ -306,7 +325,9 @@ export interface FileRouteTypes {
     | '/wishlist'
     | '/admin'
     | '/product/$slug'
+    | '/admin/blog'
     | '/admin/seo'
+    | '/admin/blog/edit'
     | '/admin/seo/edit'
     | '/admin/seo/redirects'
     | '/admin/seo/settings'
@@ -336,7 +357,9 @@ export interface FileRouteTypes {
     | '/wishlist'
     | '/admin'
     | '/product/$slug'
+    | '/admin/blog'
     | '/admin/seo'
+    | '/admin/blog/edit'
     | '/admin/seo/edit'
     | '/admin/seo/redirects'
     | '/admin/seo/settings'
@@ -367,7 +390,9 @@ export interface FileRouteTypes {
     | '/wishlist'
     | '/_authenticated/admin'
     | '/product/$slug'
+    | '/_authenticated/admin/blog'
     | '/_authenticated/admin/seo'
+    | '/_authenticated/admin/blog/edit'
     | '/_authenticated/admin/seo/edit'
     | '/_authenticated/admin/seo/redirects'
     | '/_authenticated/admin/seo/settings'
@@ -577,12 +602,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin/blog': {
+      id: '/_authenticated/admin/blog'
+      path: '/blog'
+      fullPath: '/admin/blog'
+      preLoaderRoute: typeof AuthenticatedAdminBlogRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/seo': {
       id: '/_authenticated/admin/seo'
       path: '/seo'
       fullPath: '/admin/seo'
       preLoaderRoute: typeof AuthenticatedAdminSeoRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/blog/edit': {
+      id: '/_authenticated/admin/blog/edit'
+      path: '/edit'
+      fullPath: '/admin/blog/edit'
+      preLoaderRoute: typeof AuthenticatedAdminBlogEditRouteImport
+      parentRoute: typeof AuthenticatedAdminBlogRoute
     }
     '/_authenticated/admin/seo/edit': {
       id: '/_authenticated/admin/seo/edit'
@@ -608,6 +647,20 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AuthenticatedAdminBlogRouteChildren {
+  AuthenticatedAdminBlogEditRoute: typeof AuthenticatedAdminBlogEditRoute
+}
+
+const AuthenticatedAdminBlogRouteChildren: AuthenticatedAdminBlogRouteChildren =
+  {
+    AuthenticatedAdminBlogEditRoute: AuthenticatedAdminBlogEditRoute,
+  }
+
+const AuthenticatedAdminBlogRouteWithChildren =
+  AuthenticatedAdminBlogRoute._addFileChildren(
+    AuthenticatedAdminBlogRouteChildren,
+  )
+
 interface AuthenticatedAdminSeoRouteChildren {
   AuthenticatedAdminSeoEditRoute: typeof AuthenticatedAdminSeoEditRoute
   AuthenticatedAdminSeoRedirectsRoute: typeof AuthenticatedAdminSeoRedirectsRoute
@@ -626,10 +679,12 @@ const AuthenticatedAdminSeoRouteWithChildren =
   )
 
 interface AuthenticatedAdminRouteChildren {
+  AuthenticatedAdminBlogRoute: typeof AuthenticatedAdminBlogRouteWithChildren
   AuthenticatedAdminSeoRoute: typeof AuthenticatedAdminSeoRouteWithChildren
 }
 
 const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
+  AuthenticatedAdminBlogRoute: AuthenticatedAdminBlogRouteWithChildren,
   AuthenticatedAdminSeoRoute: AuthenticatedAdminSeoRouteWithChildren,
 }
 
