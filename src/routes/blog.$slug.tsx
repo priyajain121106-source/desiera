@@ -1,4 +1,4 @@
-import { Link, createFileRoute, isNotFound } from "@tanstack/react-router";
+import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { getBlogPost, type BlogPostResult } from "@/lib/blog.functions";
 import { fetchBlogPost } from "@/lib/blog-client";
@@ -15,7 +15,7 @@ export const Route = createFileRoute("/blog/$slug")({
     }
     if (!result.post) {
       // notFound() must escape the try/catch above — throw it out here.
-      throw notFoundError();
+      throw notFound();
     }
     return { ...result, unavailable: false };
   },
@@ -67,11 +67,25 @@ export const Route = createFileRoute("/blog/$slug")({
     };
   },
   component: BlogPostPage,
+  notFoundComponent: MissingPost,
+  errorComponent: MissingPost,
 });
 
-function notFoundError(): never {
-  throw { isNotFound: true };
+function MissingPost() {
+  return (
+    <div className="mx-auto max-w-xl px-4 py-24 text-center">
+      <p className="eyebrow">404</p>
+      <h1 className="mt-2 font-display text-3xl">This story has moved on</h1>
+      <p className="mt-3 text-sm text-muted-foreground">
+        The post you're looking for doesn't exist or is no longer published.
+      </p>
+      <Link to="/blog" className="mt-6 inline-flex items-center justify-center bg-primary px-6 py-3 text-xs uppercase tracking-[0.14em] text-primary-foreground">
+        Back to the journal
+      </Link>
+    </div>
+  );
 }
+
 
 function BlogPostPage() {
   const data = Route.useLoaderData() as
@@ -80,9 +94,10 @@ function BlogPostPage() {
 
   // Fallback for the statically hosted site, where the server RPC failed in
   // the loader: read the post directly from the browser client.
+  const { slug } = Route.useParams();
   const fallback = useQuery({
-    queryKey: ["blog-post-fallback", Route.useParams().slug],
-    queryFn: () => fetchBlogPost(Route.useParams().slug),
+    queryKey: ["blog-post-fallback", slug],
+    queryFn: () => fetchBlogPost(slug),
     enabled: !!data?.unavailable,
   });
 
@@ -208,14 +223,3 @@ function BlogPostPage() {
   );
 }
 
-// Guard: the thrown object above must behave like a TanStack notFound.
-function isNotFoundError(error: unknown): boolean {
-  return (
-    typeof error === "object" &&
-    error !== null &&
-    (error as { isNotFound?: boolean }).isNotFound === true
-  );
-}
-
-// Re-export so the router recognises thrown notFound payloads on this route.
-export { isNotFound, isNotFoundError };

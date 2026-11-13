@@ -137,7 +137,7 @@ function BlogDashboard() {
           ))}
         </div>
         <Button asChild>
-          <Link to="/admin/blog/edit">New post</Link>
+          <Link to="/admin/blog/edit" search={{ slug: undefined }}>New post</Link>
         </Button>
       </div>
 

@@ -18,6 +18,7 @@ const helpLinks = [
   { label: "Shipping & Delivery", to: "/shipping" as const },
   { label: "Returns & Exchange", to: "/returns" as const },
   { label: "FAQ", to: "/faq" as const },
+  { label: "Blog", to: "/blog" as const },
   { label: "Privacy Policy", to: "/privacy" as const },
   { label: "Terms & Conditions", to: "/terms" as const },
 ];
