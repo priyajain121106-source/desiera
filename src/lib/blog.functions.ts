@@ -52,10 +52,10 @@ function sanitizeSearchTerm(term: string): string {
 /* ------------------------------ Public reads ------------------------------ */
 
 export interface BlogListingFilters {
-  category?: string;
-  q?: string;
-  limit?: number;
-  offset?: number;
+  category?: string | undefined;
+  q?: string | undefined;
+  limit?: number | undefined;
+  offset?: number | undefined;
 }
 
 export type BlogListingPost = {
@@ -230,7 +230,7 @@ function stripHtml(html: string): string {
 }
 
 export interface BlogPostInput {
-  id?: string;
+  id?: string | undefined;
   slug: string;
   title: string;
   excerpt: string | null;
@@ -293,9 +293,9 @@ export const saveBlogPost = createServerFn({ method: "POST" })
       robots_index: data.robots_index,
     };
 
-    let query = supabase.from("blog_posts")[data.id ? "update" : "insert"](insert);
-    if (data.id) query = query.eq("id", data.id);
-    const { error } = await query.select("id").single();
+    const { error } = data.id
+      ? await supabase.from("blog_posts").update(insert).eq("id", data.id).select("id").single()
+      : await supabase.from("blog_posts").insert(insert).select("id").single();
     if (error) {
       if (error.code === "23505") throw new Error("Another post already uses this URL slug");
       throw new Error(error.message);
@@ -362,9 +362,9 @@ export const saveBlogCategory = createServerFn({ method: "POST" })
       description: data.description?.trim() || null,
       sort_order: data.sort_order ?? 0,
     };
-    let query = supabase.from("blog_categories")[data.id ? "update" : "insert"](insert);
-    if (data.id) query = query.eq("id", data.id);
-    const { error } = await query.select("id").single();
+    const { error } = data.id
+      ? await supabase.from("blog_categories").update(insert).eq("id", data.id).select("id").single()
+      : await supabase.from("blog_categories").insert(insert).select("id").single();
     if (error) {
       if (error.code === "23505") throw new Error("A category with this URL slug already exists");
       throw new Error(error.message);
