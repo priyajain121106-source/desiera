@@ -15,6 +15,7 @@ const NAV = [
   { to: "/admin/seo", label: "SEO dashboard" },
   { to: "/admin/seo/settings", label: "Sitewide defaults" },
   { to: "/admin/seo/redirects", label: "Redirects" },
+  { to: "/admin/blog", label: "Blog" },
 ] as const;
 
 function AdminLayout() {
@@ -69,7 +70,7 @@ function AdminLayout() {
           <Logo size="sm" />
           <div>
             <p className="eyebrow">Admin</p>
-            <h1 className="font-display text-2xl">SEO Panel</h1>
+            <h1 className="font-display text-2xl">Admin Panel</h1>
           </div>
         </div>
         <div className="flex items-center gap-4">
