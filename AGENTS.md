@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep SEO and Blog admin/public pages out of the route tree; storefront metadata remains part of the storefront, not an admin panel.

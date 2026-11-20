@@ -28,7 +28,6 @@ const staticPaths = [
   "/faq",
   "/privacy",
   "/terms",
-  "/blog",
 ];
 
 const productSlugs = [

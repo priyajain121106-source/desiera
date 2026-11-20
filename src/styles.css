@@ -223,4 +223,3 @@
     transform: none;
   }
 }
-.blog-content h1{font-family:var(--font-display);font-size:2rem;margin:1.5rem 0 .75rem}.blog-content h2{font-family:var(--font-display);font-size:1.6rem;margin:1.5rem 0 .6rem}.blog-content h3{font-family:var(--font-display);font-size:1.3rem;margin:1.25rem 0 .5rem}.blog-content p{margin:.9rem 0;line-height:1.8}.blog-content ul{list-style:disc;padding-left:1.25rem}.blog-content ol{list-style:decimal;padding-left:1.25rem}.blog-content a{color:var(--accent);text-decoration:underline}.blog-content img{border-radius:.5rem;margin:1.5rem auto}.blog-content table{width:100%;border-collapse:collapse;margin:1.5rem 0}.blog-content th,.blog-content td{border:1px solid var(--border);padding:.5rem}

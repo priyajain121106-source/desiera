@@ -1,8 +1,7 @@
 /**
  * The single source of truth for every shareable page on the site.
- * The Admin SEO Panel edits rows in the `seo_settings` table; these
- * hardcoded values are the fallback used when a page has no row yet
- * (or when the backend is briefly unreachable).
+ * These hardcoded values are the fallback used when a page has no saved
+ * metadata row yet (or when the backend is briefly unreachable).
  */
 import { products } from "@/data/products";
 
